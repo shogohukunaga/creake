@@ -1,0 +1,130 @@
+@use "../global" as global;
+
+// ニュース一覧ページ
+.l-newslist {
+  background: #fff;
+  @include global.padding-top(32);
+  @include global.padding-bottom(60);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(24);
+    @include global.sp-padding-bottom(48);
+  }
+}
+
+.l-newslist__bc {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+  }
+}
+
+// 一覧の余白調整（TOPの l-news__list / l-news__item を流用）
+.l-newslist__list {
+  @include global.margin-top(32);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(24);
+  }
+}
+
+/* =========================================================
+   ニュース詳細
+========================================================= */
+.l-news-single {
+  background: #fff;
+  @include global.padding-top(32);
+  @include global.padding-bottom(60);
+
+  @include global.mq(sp) {
+    @include global.sp-padding(24,20,48,20);
+  }
+}
+
+.l-news-single__inner {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include global.mq(sp) {
+    width: 100%;
+  }
+}
+
+.l-news-single__meta {
+  color: global.$tx;
+  @include global.font(18, 500, 24, 0);
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    @include global.sp-font(14, 500, 22, 0);
+    @include global.sp-margin-top(24);
+  }
+}
+
+.l-news-single__ttl {
+  text-align: center;
+  color: global.$main;
+  @include global.font(28, 700, 40, 0);
+  @include global.margin-top(28);
+
+  @include global.mq(sp) {
+    text-align: left;
+    @include global.sp-font(18, 700, 28, 0);
+    @include global.sp-margin-top(16);
+  }
+}
+
+.l-news-single__img {
+  @include global.width(1033);
+  margin-left: auto;
+  margin-right: auto;
+  @include global.margin-top(56);
+  @include global.bd(8);
+  overflow: hidden;
+
+  @include global.mq(sp) {
+    width: 100%;
+    @include global.sp-margin-top(24);
+    @include global.sp-bd(8);
+  }
+}
+
+.l-news-single__body {
+  @include global.width(913);
+  margin-left: auto;
+  margin-right: auto;
+  @include global.margin-top(56);
+  color: global.$main;
+  @include global.font(20, 500, 28, 0);
+
+  @include global.mq(sp) {
+    width: 100%;
+    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-margin-top(28);
+  }
+}
+
+.l-news-single__body ul {
+  list-style: disc;
+  @include global.padding-left(30);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-left(24);
+  }
+}
+
+.l-news-single__body li {
+  display: list-item;
+}
+
+.l-news-single__btn {
+  @include global.margin-top(60);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(40);
+  }
+}

@@ -1,0 +1,158 @@
+@use "../global" as global;
+
+// ハンバーガーアイコン（SPのみ表示）
+.l-drawer__icon {
+  display: none;
+
+  @include global.mq(sp) {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    @include global.sp-right(16);
+    @include global.sp-width(48);
+    @include global.sp-height(48);
+    cursor: pointer;
+    background: global.$blue;
+    z-index: calc(#{map-get(global.$layer, drawer)} + 1);
+    transition: all 0.5s;
+  }
+
+  &.is-active {
+    .p-drawer__icon--bar1 {
+      transform: rotate(-45deg);
+      transition: all 0.3s ease-out 0s;
+      @include global.sp-top(14);
+    }
+    .p-drawer__icon--bar2 {
+      opacity: 0;
+    }
+    .p-drawer__icon--bar3 {
+      transform: rotate(45deg);
+      @include global.sp-top(14);
+      transition: all 0.3s ease-out 0s;
+    }
+  }
+}
+
+.l-drawer__icon--bar {
+  @include global.mq(sp) {
+    @include global.sp-width(24);
+    @include global.sp-height(20);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    @include global.sp-top(10);
+  }
+}
+
+.p-drawer__icon--bar1,
+.p-drawer__icon--bar2,
+.p-drawer__icon--bar3 {
+  position: absolute;
+  @include global.sp-width(24);
+  height: 2px;
+  background: global.$base;
+  left: 0;
+}
+
+.p-drawer__icon--bar1 {
+  top: 0;
+}
+.p-drawer__icon--bar2 {
+  @include global.sp-top(8);
+}
+.p-drawer__icon--bar3 {
+  @include global.sp-top(16);
+}
+
+.p-drawer__icon--tx {
+  display: none;
+}
+
+// 背景オーバーレイ
+.p-drawer__background {
+  display: none;
+
+  @include global.mq(sp) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: calc(#{map-get(global.$layer, drawer)} - 1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s;
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// ドロワー本体
+.l-drawer {
+  display: none;
+
+  @include global.mq(sp) {
+    display: block;
+    overflow-y: auto;
+    @include global.sp-width(280);
+    @include global.sp-padding-top(110);
+    @include global.sp-padding-left(28);
+    @include global.sp-padding-right(28);
+    height: 100%;
+    position: fixed;
+    background: global.$main;
+    right: 0;
+    top: 0;
+    z-index: map-get(global.$layer, drawer);
+    transform: translateX(105%);
+    transition: transform 0.5s;
+
+    &.is-active {
+      transform: translateX(0);
+    }
+  }
+}
+
+.l-drawer__nav {
+  display: flex;
+  flex-direction: column;
+  @include global.sp-gap(24);
+}
+
+.l-drawer__nav-item {
+  color: global.$base;
+  @include global.sp-font(18, 700, 18, 0);
+}
+
+.l-drawer__cta {
+  display: flex;
+  flex-direction: column;
+  @include global.sp-gap(14);
+  @include global.sp-margin-top(40);
+}
+
+.l-drawer__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  @include global.sp-height(48);
+  color: global.$base;
+  @include global.sp-font(16, 700, 16, 0);
+}
+
+.l-drawer__btn--doc {
+  background: global.$blue;
+}
+.l-drawer__btn--contact {
+  background: global.$red;
+}
+
+.fixed {
+  overflow: hidden;
+  height: 100%;
+}

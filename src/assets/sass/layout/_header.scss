@@ -1,0 +1,210 @@
+@use "../global" as global;
+
+.l-header {
+  position: fixed;
+  z-index: map-get(global.$layer, header);
+  top: 0;
+  left: 0;
+  width: 100%;
+  @include global.height(120);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: global.$main;
+  transition: transform 0.4s ease;
+  @include global.padding-left(65);
+  @include global.padding-right(77);
+
+  @include global.mq(sp) {
+    @include global.sp-height(80);
+    @include global.sp-padding-left(16);
+    @include global.sp-padding-right(16);
+  }
+}
+
+// 下方向スクロールで隠す・上方向スクロールで表示（JSで .is-hide 付与）
+.l-header.is-hide {
+  transform: translateY(-100%);
+}
+
+// ロゴ（マーク＋CREAKE）
+.l-header__logo {
+  display: flex;
+  align-items: center;
+  @include global.gap(12);
+
+  @include global.mq(sp) {
+    @include global.sp-gap(8);
+  }
+}
+
+.l-header__logo-mark {
+  @include global.width(55);
+  @include global.height(61);
+
+  @include global.mq(sp) {
+    @include global.sp-width(36);
+    @include global.sp-height(40);
+  }
+}
+
+.l-header__logo-tx {
+  color: global.$base;
+  font-family: global.$ff-en;
+  @include global.font(48, 600, 48, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(26, 600, 26, 0);
+  }
+}
+
+// 右側（ボタン＋ナビ）
+.l-header__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  @include global.gap(14);
+
+  @include global.mq(sp) {
+    display: none;
+  }
+}
+
+.l-header__cta {
+  display: flex;
+  align-items: center;
+  @include global.gap(32);
+}
+
+.l-header__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include global.width(160);
+  @include global.height(40);
+  color: global.$base;
+  @include global.font(18, 700, 18, 0);
+  transition: opacity 0.3s;
+}
+
+.l-header__btn--doc {
+  background: global.$blue;
+}
+
+.l-header__btn--doc:hover {
+  background: #1f8fe6;
+  opacity: 1;
+}
+
+.l-header__btn--contact {
+  background: global.$red;
+}
+
+.l-header__btn--contact:hover {
+  background: #c60000;
+  opacity: 1;
+}
+
+.l-header__nav {
+  display: flex;
+  align-items: center;
+  @include global.gap(40);
+}
+
+.l-header__nav-item {
+  position: relative;
+  z-index: 1;
+  color: global.$base;
+  @include global.font(18, 700, 18, 0);
+}
+
+// メニューホバー時、下線出現
+.l-header__nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: min(-8 / 14.4 * 1vw);
+  width: 0;
+  height: 2px;
+  background: global.$base;
+  transition: width 0.3s ease;
+}
+
+.l-header__nav-item:hover::after {
+  width: 100%;
+}
+
+// サービス（サブメニュー付き）
+.l-header__nav-item--service {
+  cursor: pointer;
+}
+
+.l-header__submenu {
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+  left: 0;
+  @include global.margin-top(14);
+  @include global.width(187);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid global.$main;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+// ナビ項目とサブメニューの隙間を埋める透明ブリッジ（ホバーが途切れて消えるのを防ぐ）
+.l-header__submenu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: min(-14 / 14.4 * 1vw);
+  width: 100%;
+  @include global.height(14);
+}
+
+.l-header__nav-item--service:hover .l-header__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.l-header__submenu-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  color: #000;
+  @include global.font(18, 700, 24, 0);
+  @include global.padding-top(14);
+  @include global.padding-bottom(14);
+  @include global.padding-left(14);
+  border-top: 1px solid global.$main;
+}
+
+.l-header__submenu-item:first-child {
+  border-top: none;
+}
+
+.l-header__submenu-item::after {
+  content: "";
+  position: absolute;
+  @include global.left(14);
+  @include global.bottom(10);
+  width: 0;
+  height: 2px;
+  background: global.$main;
+  transition: width 0.3s ease;
+}
+
+.l-header__submenu-item:hover {
+  color: global.$main;
+  opacity: 1;
+}
+
+.l-header__submenu-item:hover::after {
+  width: calc(100% - min(28 / 14.4 * 1vw));
+}

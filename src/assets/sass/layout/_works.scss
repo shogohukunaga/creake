@@ -1,0 +1,80 @@
+@use "../global" as global;
+
+// 成果事例一覧ページ
+.l-works-page {
+  background: #fff;
+  @include global.padding-top(32);
+  @include global.padding-bottom(60);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(24);
+    @include global.sp-padding-bottom(48);
+  }
+}
+
+.l-works-page__bc {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+  }
+}
+
+// 3カラムグリッド（l-works__item を流用）
+.l-works-grid {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+  @include global.margin-top(48);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: start;
+  @include global.gap(72);
+
+  @include global.mq(sp) {
+    @include global.sp-width(340);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    @include global.sp-gap(56);
+    @include global.sp-margin-top(32);
+  }
+}
+
+// 来場予約アシスト等（数字なしバッジ）
+.l-works__badge-cv {
+  color: global.$statblue;
+  @include global.font(16, 700, 22, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 700, 20, 0);
+  }
+}
+
+// ページネーション
+.l-works-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include global.gap(20);
+  @include global.margin-top(80);
+  color: global.$tx;
+  @include global.font(20, 500, 32, 2);
+
+  @include global.mq(sp) {
+    @include global.sp-gap(14);
+    @include global.sp-margin-top(48);
+    @include global.sp-font(15, 500, 24, 1);
+  }
+}
+
+.l-works-pager__num {
+  color: global.$tx;
+  transition: opacity 0.3s;
+}
+
+.l-works-pager__num--current {
+  color: global.$statblue;
+  font-weight: 700;
+}

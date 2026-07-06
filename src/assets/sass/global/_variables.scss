@@ -1,0 +1,45 @@
+// 色
+$main: #1c234c; // メインカラー（ヘッダー・フッター・Reasonタブ）
+$tx: #282136; // テキストカラー
+$link: #3aa6ff; // リンク・資料請求ボタン（青）
+$base: #fff; // ベース（白）
+
+$red: #f30303; // お問い合わせ（赤）
+$blue: #3aa6ff; // 資料請求（青）
+$ltblue: #e6f6fb; // カード内側・成果バッジ背景（淡い水色）
+$statblue: #285793; // 成果事例の数字（濃い青）
+$gray: #ededed; // セクション背景・ボタン背景（ライトグレー）
+$orange: #f58b19; // アクセント（業界最安水準・Step番号・スタンダードタブ）
+
+// フォント
+$ff-en: "Overpass", "Yu Gothic", YuGothic, sans-serif; // 英字・CREAKE ロゴ
+$ff-base: "Yu Gothic", YuGothic, "Noto Sans JP", "Hiragino Kaku Gothic ProN",
+  Meiryo, sans-serif; // 日本語標準
+$ff-ac: "Overpass", sans-serif; // アクセント
+$fz-base: 16px; // ベースフォントサイズ
+$fw-base: 400; // ベースフォントウェイト
+$lh-base: 1.6; // ベース行間
+
+$breakpoints: (
+  sp: "(max-width: 767px)",
+  tab: "(min-width: 768px) and (max-width: 999px) ",
+  pc: "(min-width: 1000px) and (max-width: 1200px)",
+  ppc: "(min-width: 1201px)",
+) !default;
+
+// 重なり順の定義
+$layer: (
+  // ローディング
+  loading: 300,
+  // モーダル
+  modal: 100,
+  // ドロワー
+  drawer: 40,
+  // フローティング
+  floating: 30,
+  // ヘッダー
+  header: 20,
+  // フッター
+  footer: 10,
+  default: 1
+);

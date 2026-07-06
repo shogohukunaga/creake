@@ -1,0 +1,366 @@
+@use "../global" as global;
+
+/* =========================================================
+   お問い合わせフォーム
+========================================================= */
+.l-contact {
+  background: #fff;
+  @include global.padding-top(32);
+  @include global.padding-bottom(60);
+
+  @include global.mq(sp) {
+    @include global.sp-padding(24, 20, 48, 20);
+  }
+}
+
+.l-contact__breadcrumb {
+  @include global.margin-left(120);
+}
+
+.l-contact__inner {
+  @include global.margin(0, 217, 0, 217);
+  @include global.mq(sp) {
+    @include global.sp-margin(0, 20, 0, 20);
+  }
+}
+
+.l-contact__lead {
+  color: global.$tx;
+  @include global.font(20, 700, 36, 0);
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 700, 26, 0);
+    @include global.sp-margin-top(24);
+  }
+}
+
+.l-contact__subttl {
+  color: global.$tx;
+  @include global.font(20, 700, 26, 0);
+  @include global.margin-top(48);
+  @include global.margin-bottom(20);
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 700, 24, 0);
+    @include global.sp-margin-top(32);
+    @include global.sp-margin-bottom(16);
+  }
+}
+
+.l-contact__types {
+  display: grid;
+  grid-template-columns: repeat((2), 1fr);
+  gap: min(27 / 14.4 * 1vw) /*height*/ min(130 / 14.4 * 1vw) /*wight*/;
+  @include global.mq(sp) {
+    flex-direction: column;
+    @include global.sp-gap(14);
+  }
+}
+
+.l-contact__check {
+  display: flex;
+  align-items: center;
+  @include global.gap(16);
+  cursor: pointer;
+  color: global.$tx;
+  @include global.font(20, 500, 30, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 24, 0);
+    @include global.sp-gap(12);
+  }
+}
+
+.l-contact__cb {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  @include global.width(30);
+  @include global.height(30);
+  border: 2px solid #979797;
+  @include global.bd(4);
+  background: #fff;
+  position: relative;
+  cursor: pointer;
+
+  @include global.mq(sp) {
+    @include global.sp-width(22);
+    @include global.sp-height(22);
+  }
+}
+
+.l-contact__cb:checked {
+  background: global.$statblue;
+  border-color: global.$statblue;
+}
+
+.l-contact__cb:checked::after {
+  content: "";
+  position: absolute;
+  left: 30%;
+  top: 12%;
+  width: 32%;
+  height: 60%;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.l-contact__form {
+  @include global.margin-top(48);
+  display: flex;
+  flex-direction: column;
+  @include global.gap(24);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(32);
+    @include global.sp-gap(20);
+  }
+}
+
+.l-contact__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.l-contact__label {
+  display: flex;
+  align-items: center;
+  @include global.gap(14);
+  color: global.$tx;
+  @include global.font(24, 500, 32, 0);
+  @include global.margin-bottom(8);
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 500, 24, 0);
+    @include global.sp-gap(10);
+  }
+}
+
+.l-contact__req {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: global.$red;
+  color: #fff;
+  @include global.font(16, 700, 20, 0);
+  @include global.padding(2, 6, 2, 6);
+  @include global.bd(4);
+
+  @include global.mq(sp) {
+    @include global.sp-font(12, 700, 16, 0);
+    @include global.sp-padding-left(6);
+    @include global.sp-padding-right(6);
+  }
+}
+
+.l-contact__input,
+.l-contact__textarea {
+  width: 100%;
+  background: global.$ltblue;
+  border: none;
+  @include global.bd(16);
+  color: global.$tx;
+  font-family: global.$ff-base;
+  @include global.font(20, 400, 30, 0);
+  @include global.padding(20, 32, 20, 32);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 400, 24, 0);
+    @include global.sp-bd(12);
+    @include global.sp-padding(14, 16, 14, 16);
+  }
+}
+
+.l-contact__input {
+  @include global.height(70);
+
+  @include global.mq(sp) {
+    @include global.sp-height(52);
+  }
+}
+
+.l-contact__textarea {
+  @include global.height(382);
+  resize: vertical;
+
+  @include global.mq(sp) {
+    @include global.sp-height(240);
+  }
+}
+
+.l-contact__input::placeholder,
+.l-contact__textarea::placeholder {
+  color: #979797;
+}
+
+.l-contact__privacy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include global.margin-top(48);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(32);
+  }
+}
+
+.l-contact__privacy-ttl {
+  color: global.$tx;
+  @include global.font(20, 500, 30, 0);
+  @include global.margin-bottom(16);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 24, 0);
+  }
+}
+
+.l-contact__agree {
+  display: flex;
+  align-items: center;
+  @include global.gap(16);
+  cursor: pointer;
+  color: global.$tx;
+  @include global.font(24, 700, 34, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 700, 24, 0);
+    @include global.sp-gap(10);
+  }
+}
+
+.l-contact__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include global.width(360);
+  @include global.height(80);
+  margin-left: auto;
+  margin-right: auto;
+  @include global.margin-top(48);
+  background: global.$main;
+  color: #fff;
+  @include global.font(24, 700, 24, 0);
+  border: none;
+  cursor: pointer;
+  font-family: global.$ff-base;
+  transition: opacity 0.3s;
+
+  @include global.mq(sp) {
+    @include global.sp-width(280);
+    @include global.sp-height(60);
+    @include global.sp-font(18, 700, 18, 0);
+    @include global.sp-margin-top(32);
+  }
+}
+
+.l-contact__submit:hover {
+  opacity: 0.85;
+}
+
+/* =========================================================
+   サンクスページ
+========================================================= */
+.l-thanks {
+  min-height: 100vh;
+  background: global.$ltblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  @include global.padding(120, 20, 120, 20);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(80);
+    @include global.sp-padding-bottom(80);
+  }
+}
+
+.l-thanks__tx {
+  color: global.$tx;
+  @include global.font(24, 500, 40, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 28, 0);
+  }
+}
+
+.l-thanks__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @include global.margin-top(60);
+  @include global.padding(16, 40, 16, 40);
+  background: global.$main;
+  color: #fff;
+  @include global.font(24, 700, 24, 0);
+  transition: opacity 0.3s;
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(40);
+    @include global.sp-font(16, 700, 16, 0);
+    @include global.sp-padding(14, 28, 14, 28);
+  }
+}
+
+/* =========================================================
+   プライバシーポリシー
+========================================================= */
+.l-privacy {
+  background: #fff;
+  @include global.padding(44, 120, 60, 120);
+  @include global.mq(sp) {
+    @include global.sp-padding(24, 20, 48, 20);
+  }
+}
+
+.l-privacy__inner {
+  @include global.margin(0, 70, 0, 70);
+  @include global.mq(sp) {
+    @include global.sp-margin(0, 20, 0, 20);
+  }
+}
+
+.l-privacy__ttl {
+  color: global.$tx;
+  @include global.font(32, 700, 44, 0);
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    @include global.sp-font(20, 700, 30, 0);
+    @include global.sp-margin-top(24);
+  }
+}
+
+.l-privacy__body {
+  color: global.$tx;
+  @include global.font(16, 400, 28, 0);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    @include global.sp-font(14, 400, 24, 0);
+    @include global.sp-margin-top(20);
+  }
+}
+
+.l-privacy__h {
+  color: global.$tx;
+  @include global.font(20, 700, 30, 0);
+  @include global.margin-top(32);
+  @include global.margin-bottom(8);
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 700, 26, 0);
+    @include global.sp-margin-top(24);
+  }
+}
+
+.l-privacy__p {
+  @include global.margin-bottom(16);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-bottom(14);
+  }
+}

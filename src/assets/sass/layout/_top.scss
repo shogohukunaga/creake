@@ -1,0 +1,947 @@
+@use "../global" as global;
+
+/* =========================================================
+   ファーストビュー
+========================================================= */
+@keyframes fvUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes fvDown {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   オープニングアニメーション（ランディング時）
+   ロゴ＋会社名 出現 → 約2秒表示 → FV出現・タイトル左→右スライドイン
+========================================================= */
+@keyframes openingLogoIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes openingOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes fvCopyIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.l-opening {
+  position: fixed;
+  inset: 0;
+  z-index: map-get(global.$layer, loading);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include global.gap(12);
+  background: global.$main;
+  animation: openingOut 0.8s ease 2.4s forwards;
+}
+
+.l-opening__mark {
+  @include global.width(60);
+  @include global.height(60);
+  animation: openingLogoIn 1.2s ease forwards;
+
+  @include global.mq(sp) {
+    @include global.sp-width(50);
+    @include global.sp-height(50);
+  }
+}
+
+.l-opening__tx {
+  color: #fff;
+  font-family: global.$ff-en;
+  @include global.font(48, 600, 48, 0);
+  animation: openingLogoIn 1.2s ease forwards;
+
+  @include global.mq(sp) {
+    @include global.sp-font(36, 600, 36, 0);
+  }
+}
+
+.l-fv {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  @include global.height(730);
+  background: global.$base;
+  overflow: hidden;
+
+  @include global.mq(sp) {
+    @include global.sp-height(560);
+  }
+}
+
+// 屋号ウォーターマーク（左920pxのグレーパネル）
+.l-fv__yago {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  @include global.width(920);
+  height: 100%;
+  background: global.$gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include global.gap(10);
+
+  @include global.mq(sp) {
+    width: 100%;
+  }
+}
+
+.l-fv__yago-row {
+  @include global.width(837);
+  @include global.height(75);
+}
+
+.l-fv__yago-row--sm {
+  @include global.width(446);
+  @include global.height(93);
+}
+
+// 右520px：2列の画像スクロール
+.l-fv__cols {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  @include global.width(520);
+  height: 100%;
+  display: flex;
+
+  @include global.mq(sp) {
+    display: none;
+  }
+}
+
+.l-fv__col {
+  @include global.width(260);
+  height: 100%;
+  overflow: hidden;
+}
+
+.l-fv__track {
+  display: flex;
+  flex-direction: column;
+}
+
+.l-fv__track--down {
+  animation: fvDown 32s linear infinite;
+}
+
+.l-fv__track--up {
+  animation: fvUp 32s linear infinite;
+}
+
+.l-fv__img {
+  width: 100%;
+  @include global.height(250);
+}
+
+// キャッチコピー
+.l-fv__copy {
+  position: absolute;
+  z-index: 2;
+  @include global.left(120);
+  @include global.top(240);
+  @include global.width(785);
+  color: global.$tx;
+  @include global.font(64, 700, 128, -1);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  animation: fvCopyIn 1s ease 2.9s both;
+  span {
+    @include global.font(52, 700, 100, -1);
+  }
+  @include global.mq(sp) {
+    @include global.sp-left(20);
+    @include global.sp-top(120);
+    @include global.sp-width(350);
+    @include global.sp-font(21, 700, 36, -1);
+  }
+}
+
+// SP用：3枚横並び画像（SPデザイン 1:284 準拠）
+.l-fv__sprow {
+  display: none;
+
+  @include global.mq(sp) {
+    display: flex;
+    justify-content: center;
+    @include global.sp-gap(8);
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    width: 100%;
+    @include global.sp-bottom(40);
+  }
+}
+
+.l-fv__sprow-img {
+  @include global.mq(sp) {
+    @include global.sp-width(122);
+    @include global.sp-height(220);
+  }
+}
+
+// 縦型フローティングCTA
+.l-fv__side {
+  position: fixed;
+  z-index: map-get(global.$layer, floating);
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+
+  @include global.mq(sp) {
+    display: none;
+  }
+}
+
+.l-fv__tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include global.gap(10);
+  @include global.width(70);
+  @include global.height(197);
+  border: 2px solid #fff;
+  color: #fff;
+  transition: opacity 0.3s;
+  @include global.mq("tab") {
+    @include global.height(220);
+  }
+}
+
+.l-fv__tab--doc {
+  background: global.$blue;
+}
+
+.l-fv__tab--doc:hover {
+  background: #1f8fe6;
+  opacity: 1;
+}
+
+.l-fv__tab--contact {
+  background: global.$red;
+}
+
+.l-fv__tab--contact:hover {
+  background: #c60000;
+  opacity: 1;
+}
+
+.l-fv__tab-book {
+  @include global.width(35);
+  @include global.height(30);
+}
+.l-fv__tab-mail {
+  @include global.width(35);
+  @include global.height(30);
+}
+
+.l-fv__tab-tx {
+  writing-mode: vertical-rl;
+  @include global.font(18, 700, 22, 2);
+}
+
+// SP用CTAバー（FV直下・PCは非表示。SPデザイン 1:284 準拠）
+.l-cta {
+  display: none;
+
+  @include global.mq(sp) {
+    display: flex;
+  }
+}
+
+.l-cta__btn {
+  @include global.mq(sp) {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include global.sp-height(60);
+    color: #fff;
+    @include global.sp-font(16, 700, 16, 0);
+  }
+}
+
+.l-cta__btn--doc {
+  background: global.$blue;
+}
+
+.l-cta__btn--contact {
+  background: global.$red;
+}
+
+/* =========================================================
+   イントロ（工務店専門で培ったノウハウで）
+========================================================= */
+.l-intro {
+  background: global.$base;
+  @include global.padding(32, 120, 32, 120);
+  @include global.mq(sp) {
+    @include global.sp-padding(40, 20, 40, 20);
+  }
+}
+
+.l-intro__ttl {
+  color: global.$tx;
+  @include global.font(36, 700, 50, 0);
+  @include global.mq(sp) {
+    @include global.sp-font(22, 700, 34, 0);
+  }
+}
+
+.l-intro__tx {
+  color: global.$tx;
+  @include global.font(20, 500, 32, 0);
+  @include global.margin-top(30);
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-margin-top(20);
+  }
+}
+
+/* =========================================================
+   選ばれる理由（サービス）
+========================================================= */
+.l-reason {
+  position: relative;
+  z-index: 1;
+  background: global.$gray;
+  @include global.padding-top(32);
+  @include global.padding-bottom(32);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(40);
+    @include global.sp-padding-bottom(40);
+  }
+}
+
+.l-reason__ttl {
+  @include global.font(36, 700, 40, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(24, 700, 30, 0);
+  }
+}
+
+.l-reason__list {
+  display: flex;
+  justify-content: center;
+  @include global.gap(8);
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    flex-direction: column;
+    align-items: center;
+    @include global.sp-gap(16);
+    @include global.sp-margin-top(32);
+  }
+}
+
+.l-reason__card {
+  position: relative;
+  z-index: 1;
+  @include global.width(430);
+  @include global.height(500);
+  background: global.$base;
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+    height: auto;
+    @include global.sp-padding-bottom(28);
+  }
+}
+
+.l-reason__inner {
+  position: absolute;
+  z-index: 0;
+  @include global.left(53);
+  @include global.top(50);
+  @include global.width(322);
+  @include global.height(400);
+  background: global.$ltblue;
+
+  @include global.mq(sp) {
+    @include global.sp-left(34);
+    @include global.sp-top(27);
+    @include global.sp-width(282);
+    height: calc(100% - min(55 / 3.75 * 1vw));
+  }
+}
+
+.l-reason__tab {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  @include global.width(129);
+  @include global.height(140);
+
+  @include global.mq(sp) {
+    @include global.sp-width(64);
+    @include global.sp-height(79);
+  }
+}
+
+.l-reason__label {
+  position: absolute;
+  z-index: 3;
+  @include global.top(10);
+  @include global.left(19);
+  color: #fff;
+  font-family: global.$ff-en;
+  @include global.font(24, 500, 30, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-top(8);
+    @include global.sp-left(8);
+    @include global.sp-font(14, 500, 18, 0);
+  }
+}
+
+.l-reason__num {
+  position: absolute;
+  z-index: 3;
+  @include global.top(44);
+  @include global.left(26);
+  color: #fff;
+  font-family: global.$ff-en;
+  @include global.font(64, 500, 70, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-top(26);
+    @include global.sp-left(18);
+    @include global.sp-font(28, 500, 30, 0);
+  }
+}
+
+.l-reason__content {
+  position: relative;
+  z-index: 2;
+  @include global.padding-top(155);
+  @include global.padding-left(74);
+  @include global.padding-right(74);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(96);
+    @include global.sp-padding-left(24);
+    @include global.sp-padding-right(24);
+  }
+}
+
+.l-reason__ttl-in {
+  color: global.$tx;
+  @include global.font(20, 700, 28, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(18, 700, 26, 0);
+  }
+}
+
+.l-reason__tx {
+  color: global.$tx;
+  @include global.font(18, 500, 30, 0);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-margin-top(16);
+  }
+}
+
+/* =========================================================
+   成果事例
+========================================================= */
+.l-works {
+  background: global.$base;
+  @include global.padding-top(31);
+  @include global.padding-bottom(30);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(32);
+    @include global.sp-padding-bottom(33);
+  }
+}
+
+.l-works__tx {
+  margin: 0 auto;
+  width: fit-content;
+  color: global.$tx;
+  @include global.font(18, 500, 28, 0);
+  @include global.margin-top(16);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-margin-top(16);
+    @include global.sp-padding-left(60);
+    @include global.sp-padding-right(60);
+    text-align: left;
+  }
+}
+
+.l-works__list {
+  display: flex;
+  justify-content: center;
+  @include global.gap(120);
+  @include global.margin-top(32);
+
+  @include global.mq(sp) {
+    flex-direction: column;
+    align-items: center;
+    @include global.sp-gap(16);
+    @include global.sp-margin-top(16);
+  }
+}
+
+// 電話モックアップ＋右横バッジの横並びユニット
+.l-works__item {
+  display: flex;
+  align-items: flex-start;
+  @include global.gap(34);
+
+  @include global.mq(sp) {
+    align-items: center;
+    @include global.sp-gap(8);
+  }
+}
+
+.l-works__img {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  @include global.width(144);
+  @include global.height(267);
+  @include global.bd(22);
+  overflow: hidden;
+
+  // スマホ枠（スクリーン部分は透過）を写真の上に重ねる
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: url(../img/pc/phone-frame.webp) center / 100% 100% no-repeat;
+    pointer-events: none;
+  }
+
+  @include global.mq(sp) {
+    @include global.sp-width(146);
+    @include global.sp-height(270);
+    @include global.sp-bd(22);
+  }
+}
+
+.l-works__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  @include global.margin-top(123);
+  @include global.width(150);
+  @include global.height(83);
+  @include global.padding-left(10);
+  @include global.padding-right(10);
+  background: global.$ltblue;
+  text-align: center;
+
+  @include global.mq(sp) {
+    margin-top: 0;
+    @include global.sp-width(150);
+    @include global.sp-height(83);
+    @include global.sp-padding-left(10);
+    @include global.sp-padding-right(10);
+  }
+}
+
+.l-works__badge-tx {
+  color: global.$tx;
+  @include global.font(14, 700, 22, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(13, 700, 20, 0);
+  }
+}
+
+.l-works__badge-num {
+  color: global.$statblue;
+  @include global.font(23, 700, 26, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(22, 700, 24, 0);
+  }
+}
+
+.l-works__btn {
+  @include global.margin-top(33);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(17);
+  }
+}
+
+/* =========================================================
+   私たちについて
+========================================================= */
+.l-about {
+  background: global.$gray;
+  @include global.padding-top(32);
+  @include global.padding-bottom(32);
+
+  @include global.mq(sp) {
+    @include global.sp-padding(40, 20, 40, 20);
+  }
+}
+
+.l-about__inner {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include global.mq(sp) {
+    width: 100%;
+  }
+}
+
+.l-about__ttl {
+  color: global.$tx;
+  @include global.font(30, 700, 40, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(22, 700, 32, 0);
+  }
+}
+
+.l-about__tx {
+  color: global.$tx;
+  @include global.font(18, 500, 34, 0);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-margin-top(20);
+  }
+}
+
+.l-about__btn {
+  @include global.margin-top(40);
+  margin-left: auto;
+  margin-right: 0;
+  @include global.mq(sp) {
+    @include global.sp-margin-top(32);
+  }
+}
+
+/* =========================================================
+   ニュース
+========================================================= */
+.l-news {
+  background: global.$base;
+  @include global.padding-top(30);
+  @include global.padding-bottom(40);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(40);
+    @include global.sp-padding-bottom(40);
+  }
+}
+
+.l-news__sub {
+  @include global.margin-top(8);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(6);
+  }
+}
+
+.l-news__list {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  @include global.gap(8);
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+    @include global.sp-gap(16);
+    @include global.sp-margin-top(32);
+  }
+}
+
+.l-news__item {
+  display: flex;
+  align-items: center;
+  // 高さは中身＋paddingで決める（固定heightは廃止）／列間の余白は親のgapで
+  @include global.gap(30);
+  @include global.padding(15, 21, 15, 21);
+  background: global.$base;
+  border: 1px solid global.$tx;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: global.$gray;
+    opacity: 1;
+  }
+
+  @include global.mq(sp) {
+    flex-wrap: wrap;
+    @include global.sp-gap(12);
+    @include global.sp-padding(12, 16, 12, 16);
+  }
+}
+
+.l-news__date {
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: global.$tx;
+  @include global.font(18, 500, 32, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(14, 500, 20, 0);
+  }
+}
+
+.l-news__line {
+  flex-shrink: 0;
+  width: 1px;
+  @include global.height(20);
+  background: global.$tx;
+
+  @include global.mq(sp) {
+    @include global.sp-height(16);
+  }
+}
+
+.l-news__cat {
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: global.$tx;
+  @include global.font(18, 500, 32, 0);
+  @include global.width(200);
+  @include global.mq(sp) {
+    @include global.sp-font(14, 500, 20, 0);
+  }
+}
+
+.l-news__ttl-in {
+  flex: 1;
+  min-width: 0;
+  color: global.$tx;
+  @include global.font(18, 500, 32, 0);
+
+  @include global.mq(sp) {
+    flex-basis: 100%;
+    @include global.sp-font(15, 500, 24, 0);
+  }
+}
+
+.p-news__btn {
+  @include global.margin-top(32);
+}
+
+/* =========================================================
+   ブログ
+========================================================= */
+.l-blog {
+  background: global.$gray;
+  @include global.padding-top(32);
+  @include global.padding-bottom(32);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(40);
+    @include global.sp-padding-bottom(40);
+  }
+}
+
+.l-blog__list {
+  @include global.width(1226);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @include global.gap(64);
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+    flex-direction: column;
+    @include global.sp-gap(28);
+    @include global.sp-margin-top(32);
+  }
+}
+
+.l-blog__item {
+  position: relative;
+  z-index: 1;
+  @include global.width(543);
+
+  @include global.mq(sp) {
+    width: 100%;
+  }
+}
+
+.l-blog__link {
+  display: flex;
+  @include global.gap(20);
+
+  @include global.mq(sp) {
+    flex-direction: column;
+    @include global.sp-gap(12);
+  }
+}
+
+.l-blog__img {
+  @include global.width(212);
+  @include global.height(134);
+  flex-shrink: 0;
+  overflow: hidden;
+
+  @include global.mq(sp) {
+    width: 100%;
+    @include global.sp-height(200);
+  }
+}
+
+// ホバーで写真拡大
+.l-blog__img img {
+  transition: transform 0.4s ease;
+}
+
+.l-blog__link:hover {
+  opacity: 1;
+}
+
+.l-blog__link:hover .l-blog__img img {
+  transform: scale(1.08);
+}
+
+.l-blog__body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.l-blog__ttl {
+  color: global.$tx;
+  @include global.font(20, 500, 30, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 500, 24, 0);
+  }
+}
+
+.l-blog__line {
+  width: 100%;
+  height: 1px;
+  background: global.$tx;
+  @include global.margin-top(37);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(28);
+  }
+}
+
+.l-blog__meta {
+  display: flex;
+  align-items: center;
+  @include global.gap(16);
+  @include global.margin-top(20);
+
+  @include global.mq(sp) {
+    @include global.sp-gap(12);
+    @include global.sp-margin-top(14);
+  }
+}
+
+.l-blog__date {
+  color: global.$tx;
+  @include global.font(16, 400, 20, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(14, 400, 18, 0);
+  }
+}
+
+.l-blog__cat {
+  background: global.$tx;
+  color: #fff;
+  @include global.font(16, 700, 20, 0);
+  @include global.padding(3, 8, 3, 8);
+
+  @include global.mq(sp) {
+    @include global.sp-font(13, 700, 18, 0);
+    @include global.sp-padding(3, 8, 3, 8);
+  }
+}
+
+.l-blog__more {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  @include global.gap(4);
+  background: global.$base;
+  @include global.padding(4, 6, 4, 6);
+  color: global.$tx;
+  @include global.font(12, 700, 14, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(12, 700, 14, 0);
+  }
+}
+
+.l-blog__more-icon {
+  @include global.width(12);
+  @include global.height(12);
+
+  @include global.mq(sp) {
+    @include global.sp-width(12);
+    @include global.sp-height(12);
+  }
+}
+
+.l-blog__btn {
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(32);
+  }
+}

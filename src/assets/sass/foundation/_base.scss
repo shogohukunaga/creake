@@ -1,0 +1,424 @@
+@use "../global" as global;
+
+body {
+  color: global.$tx;
+  font-family: global.$ff-base;
+  position: relative;
+  @include global.font(16, 400, 32, 0);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(15, 400, 30, 0);
+    }
+  }
+}
+
+.over {
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  position: relative;
+  transition-timing-function: linear;
+}
+
+[id] {
+  scroll-margin-top: min(140 / 14.4 * 1vw); /* ヘッダー高さ分 */
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      scroll-margin-top: min(80 / 3.75 * 1vw); /* ヘッダー高さ分 */
+    }
+  }
+}
+
+.fz96 {
+  @include global.font(96, 700, 128, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(40, 700, 40, 1);
+    }
+  }
+}
+.fz64 {
+  @include global.font(64, 700, 80, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(32, 700, 32, 1);
+    }
+  }
+}
+.fz48 {
+  @include global.font(48, 500, 60, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(24, 500, 40, 1);
+    }
+  }
+}
+.fz40 {
+  @include global.font(40, 500, 60, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(24, 500, 40, 1);
+    }
+  }
+}
+.fz36 {
+  @include global.font(36, 700, 36, 0);
+  span {
+    color: global.$main;
+  }
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(20, 700, 20, 0);
+    }
+  }
+}
+.fz32 {
+  @include global.font(32, 500, 40, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(20, 500, 30, 1);
+    }
+  }
+}
+
+.fz28 {
+  @include global.font(28, 500, 36, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(20, 500, 30, 0.5);
+    }
+  }
+}
+
+.fz25 {
+  @include global.font(25, 500, 30, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(20, 500, 20, 1);
+    }
+  }
+}
+
+.fz24 {
+  @include global.font(24, 500, 30, 0);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(20, 500, 30, 0);
+    }
+  }
+}
+
+.fz20 {
+  @include global.font(20, 700, 26, 2.2);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(18, 700, 20, 1);
+    }
+  }
+}
+
+.jc {
+  justify-content: center;
+}
+
+.fz18 {
+  @include global.font(18, 500, 30, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(16, 500, 24, 1);
+    }
+  }
+}
+
+.fz16 {
+  @include global.font(16, 500, 20, 1);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-font(15, 500, 20, 1);
+    }
+  }
+}
+
+.be-none {
+  &::before {
+    display: none;
+  }
+}
+
+.af-none {
+  &::after {
+    display: none;
+  }
+}
+
+.bd-none {
+  border-bottom: none !important;
+}
+.row-revers {
+  flex-direction: row-reverse;
+
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      flex-direction: column;
+    }
+  }
+}
+
+.cw {
+  color: white !important;
+}
+.cb {
+  color: global.$base !important;
+}
+
+.cm {
+  color: global.$main !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.tac {
+  text-align: center !important;
+}
+
+.tal {
+  text-align: left !important;
+}
+
+.ml70 {
+  margin-left: min(70 / 14.4 * 1vw) !important;
+}
+
+.pt0 {
+  padding-top: 0 !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      padding-top: 0 !important;
+    }
+  }
+}
+
+.pt60 {
+  @include global.padding-top(60);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-padding-top(32);
+    }
+  }
+}
+
+.pl60 {
+  @include global.padding-left(60);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-padding-left(24);
+    }
+  }
+}
+
+.pl40 {
+  @include global.padding-left(40);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-padding-left(20);
+    }
+  }
+}
+
+.pl20 {
+  @include global.padding-left(20);
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      @include global.sp-padding-left(12);
+    }
+  }
+}
+
+.mt300 {
+  margin-top: min(300 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(120 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt240 {
+  margin-top: min(240 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(120 / 3.75 * 1vw) !important;
+    }
+  }
+}
+
+.mt180 {
+  margin-top: min(180 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(80 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt160 {
+  margin-top: min(160 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(80 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt140 {
+  margin-top: min(140 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(80 / 3.75 * 1vw) !important;
+    }
+  }
+}
+
+.mt120 {
+  margin-top: min(120 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(64 / 3.75 * 1vw) !important;
+    }
+  }
+}
+
+.mt100 {
+  margin-top: min(100 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(48 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt90 {
+  margin-top: min(90 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(40 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt80 {
+  margin-top: min(80 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(40 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt70 {
+  margin-top: min(70 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(40 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt60 {
+  margin-top: min(60 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(30 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt50 {
+  margin-top: min(50 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(24 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt40 {
+  margin-top: min(40 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(16 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt32 {
+  margin-top: min(32 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(16 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt30 {
+  margin-top: min(30 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(16 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt24 {
+  margin-top: min(24 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(16 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt20 {
+  margin-top: min(20 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(10 / 3.75 * 1vw) !important;
+    }
+  }
+}
+.mt16 {
+  margin-top: min(16 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(8 / 3.75 * 1vw) !important;
+    }
+  }
+}
+
+.mt10 {
+  margin-top: min(10 / 14.4 * 1vw) !important;
+  @each $breakpoint in ("sp") {
+    @include global.mq($breakpoint) {
+      margin-top: min(8 / 3.75 * 1vw) !important;
+    }
+  }
+}
+
+.mt0 {
+  margin-top: 0 !important;
+}
+
+.bgm {
+  background: global.$main !important;
+}
+
+.bg-bule {
+  background: #d5ecfb !important;
+}
+
+.c-wf {
+  width: fit-content;
+  margin: 0 auto;
+}
+.wf {
+  width: fit-content;
+}
+
+section,
+div,
+p,
+a,
+img,
+span {
+  // outline: 1px solid #09e005;
+}

@@ -1,0 +1,30 @@
+@use "../global" as global;
+
+// 共通セクションタイトル
+.c-ttl {
+  text-align: center;
+  color: global.$tx;
+  @include global.font(32, 700, 40, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(24, 700, 30, 0);
+  }
+}
+
+// タイトル下の日本語/英語サブラベル
+.c-subttl {
+  text-align: center;
+  color: global.$tx;
+  @include global.font(18, 500, 24, 0);
+  @include global.margin-top(12);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 20, 0);
+    @include global.sp-margin-top(8);
+  }
+}
+
+// 最新情報などの強調ラベル（赤）
+.c-subttl--red {
+  color: global.$red;
+}

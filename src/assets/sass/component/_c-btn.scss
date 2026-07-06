@@ -1,0 +1,44 @@
+@use "../global" as global;
+
+// 共通CTAボタン（460×82）：成果事例・ニュース・私たちについて・ブログ
+.c-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include global.gap(10);
+  @include global.width(460);
+  @include global.height(82);
+  margin-left: auto;
+  margin-right: auto;
+  background: global.$gray;
+  color: global.$tx;
+  @include global.font(24, 700, 24, 0);
+  transition: opacity 0.3s;
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+    @include global.sp-height(55);
+    @include global.sp-font(18, 700, 18, 0);
+  }
+}
+
+// ホバー時、色変化あり
+.c-btn:hover {
+  background: #a9a9a9;
+  opacity: 1;
+}
+
+// 白背景セクション上のボタンはグレー、グレー背景セクション上は白
+.c-btn--white {
+  background: global.$base;
+}
+
+.c-btn__icon {
+  @include global.width(28);
+  @include global.height(28);
+
+  @include global.mq(sp) {
+    @include global.sp-width(22);
+    @include global.sp-height(22);
+  }
+}

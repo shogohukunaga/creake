@@ -1,0 +1,208 @@
+@use "../global" as global;
+
+// ページ上部（パンくず＋リード文）
+.l-about__head {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+  @include global.padding-top(32);
+  @include global.padding-bottom(24);
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+    @include global.sp-padding-top(24);
+    @include global.sp-padding-bottom(16);
+  }
+}
+
+.l-about__lead {
+  color: global.$tx;
+  @include global.font(40, 700, 58, 0);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    @include global.sp-font(20, 700, 30, 0);
+    @include global.sp-margin-top(16);
+  }
+}
+
+/* =========================================================
+   Vision / Misson / Future 行
+========================================================= */
+.l-about__row {
+  position: relative;
+  z-index: 1;
+  background: #f4f4f4;
+  @include global.margin-top(30);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(24);
+  }
+}
+
+.l-about__row-inner {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  @include global.padding-top(39);
+  @include global.padding-bottom(39);
+
+  @include global.mq(sp) {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.l-about__body {
+  @include global.width(614);
+
+  @include global.mq(sp) {
+    width: 100%;
+    @include global.sp-padding(32,20,24,20);
+  }
+}
+
+.l-about__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @include global.width(172);
+  @include global.height(72);
+  background: #fff;
+  color: global.$tx;
+  @include global.font(32, 400, 32, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-width(80);
+    @include global.sp-height(48);
+    @include global.sp-font(18, 400, 18, 0);
+  }
+}
+
+.l-about__ttl {
+  color: global.$tx;
+  @include global.font(32, 700, 46, 0);
+  @include global.margin-top(20);
+
+  @include global.mq(sp) {
+    @include global.sp-font(20, 700, 30, 0);
+    @include global.sp-margin-top(16);
+  }
+}
+
+.l-about__tx {
+  color: global.$tx;
+  @include global.font(20, 400, 32, 0);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 400, 26, 0);
+    @include global.sp-margin-top(16);
+  }
+}
+
+.l-about__img {
+  @include global.width(536);
+  @include global.height(320);
+  overflow: hidden;
+  position: relative;
+  @include global.top(-48);
+  @include global.mq(sp) {
+    width: 100%;
+    @include global.sp-height(240);
+  }
+}
+
+/* =========================================================
+   代表メッセージ
+========================================================= */
+.l-about__msg {
+  position: relative;
+  z-index: 1;
+  background: #f4f4f4;
+  @include global.margin-top(58);
+  @include global.padding-bottom(60);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(24);
+    @include global.sp-padding-bottom(40);
+  }
+}
+
+.l-about__msg-inner {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+  }
+}
+
+.l-about__msg-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @include global.height(72);
+  @include global.padding-left(20);
+  @include global.padding-right(20);
+  background: #fff;
+  border: 1px solid global.$main;
+  color: global.$tx;
+  @include global.font(32, 500, 32, 0);
+  transform: translateY(-50%);
+
+  @include global.mq(sp) {
+    @include global.sp-height(48);
+    @include global.sp-padding-left(16);
+    @include global.sp-padding-right(16);
+    @include global.sp-font(20, 500, 20, 0);
+  }
+}
+
+.l-about__msg-body {
+  @include global.padding-left(54);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-left(12);
+    @include global.sp-padding-right(12);
+  }
+}
+
+.l-about__msg-name {
+  color: global.$tx;
+  @include global.font(32, 700, 40, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(20, 700, 28, 0);
+  }
+}
+
+.l-about__msg-name span {
+  @include global.font(28, 500, 40, 0);
+  @include global.margin-right(32);
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 500, 28, 0);
+  }
+}
+
+.l-about__msg-tx {
+  @include global.width(1094);
+  color: global.$tx;
+  @include global.font(20, 500, 34, 0.6);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    width: 100%;
+    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-margin-top(16);
+  }
+}

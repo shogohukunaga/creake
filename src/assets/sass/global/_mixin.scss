@@ -1,0 +1,200 @@
+@use "./variables" as global;
+
+// メディアクエリー
+@mixin mq($breakpoint: sp) {
+  @media #{map-get(global.$breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// 各ブレイクポイントごとのスケール値
+$breakpoint-scales: (
+  pc: 14.4,
+  tab: 7.68,
+  sp: 3.75,
+);
+
+// グローバルなフォントミックスイン
+@mixin font($size, $weight, $height, $spacing) {
+  font-size: max(12px, #{$size / map-get($breakpoint-scales, pc) * 1vw});
+  font-weight: $weight;
+  line-height: calc($height / $size);
+  letter-spacing: calc($spacing / $size * 1em);
+}
+
+@mixin lh($size, $height) {
+  line-height: calc($height / $size);
+}
+
+@mixin font-normal($size, $weight, $spacing) {
+  font-size: max(12px, #{$size / map-get($breakpoint-scales, pc) * 1vw});
+  font-weight: $weight;
+  line-height: calc(($size * 1.2) / $size);
+  letter-spacing: calc($spacing / $size * 1em);
+}
+
+@mixin sp-font($size, $weight, $height, $spacing) {
+  font-size: min(
+    #{$size * 2}px,
+    #{$size / map-get($breakpoint-scales, sp) * 1vw}
+  );
+  font-weight: $weight;
+  line-height: calc($height / $size);
+  letter-spacing: calc($spacing / $size * 1em);
+}
+@mixin sp-font-normal($size, $weight, $spacing) {
+  font-size: min(
+    #{$size * 1.5}px,
+    #{$size / map-get($breakpoint-scales, sp) * 1vw}
+  );
+  font-weight: $weight;
+  line-height: calc(($size * 1.2) / $size);
+  letter-spacing: calc($spacing / $size * 1em);
+}
+
+@mixin padding($size1, $size2, $size3, $size4) {
+  padding-top: min($size1 / map-get($breakpoint-scales, pc) * 1vw);
+  padding-left: min($size2 / map-get($breakpoint-scales, pc) * 1vw);
+  padding-bottom: min($size3 / map-get($breakpoint-scales, pc) * 1vw);
+  padding-right: min($size4 / map-get($breakpoint-scales, pc) * 1vw);
+}
+
+@mixin sp-padding($size1, $size2, $size3, $size4) {
+  padding-top: min($size1 / map-get($breakpoint-scales, sp) * 1vw);
+  padding-left: min($size2 / map-get($breakpoint-scales, sp) * 1vw);
+  padding-bottom: min($size3 / map-get($breakpoint-scales, sp) * 1vw);
+  padding-right: min($size4 / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin margin($size1, $size2, $size3, $size4) {
+  margin-top: min($size1 / map-get($breakpoint-scales, pc) * 1vw);
+  margin-left: min($size2 / map-get($breakpoint-scales, pc) * 1vw);
+  margin-bottom: min($size3 / map-get($breakpoint-scales, pc) * 1vw);
+  margin-right: min($size4 / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin sp-margin($size1, $size2, $size3, $size4) {
+  margin-top: min($size1 / map-get($breakpoint-scales, sp) * 1vw);
+  margin-left: min($size2 / map-get($breakpoint-scales, sp) * 1vw);
+  margin-bottom: min($size3 / map-get($breakpoint-scales, sp) * 1vw);
+  margin-right: min($size4 / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin gap($size) {
+  gap: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+
+@mixin sp-gap($size) {
+  gap: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin margin-top($size) {
+  margin-top: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin sp-margin-top($size) {
+  margin-top: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin width($size) {
+  width: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+
+@mixin sp-width($size) {
+  width: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin height($size) {
+  height: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+
+@mixin padding-top($size) {
+  padding-top: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin padding-bottom($size) {
+  padding-bottom: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin padding-left($size) {
+  padding-left: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin padding-right($size) {
+  padding-right: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin margin-left($size) {
+  margin-left: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin margin-right($size) {
+  margin-right: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin margin-bottom($size) {
+  margin-bottom: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+
+@mixin width($size) {
+  width: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+
+@mixin height($size) {
+  height: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+
+@mixin left($size) {
+  left: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin right($size) {
+  right: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin bottom($size) {
+  bottom: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin top($size) {
+  top: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+@mixin sp-height($size) {
+  height: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin sp-padding-top($size) {
+  padding-top: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-padding-bottom($size) {
+  padding-bottom: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-padding-left($size) {
+  padding-left: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-padding-right($size) {
+  padding-right: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-margin-left($size) {
+  margin-left: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-margin-right($size) {
+  margin-right: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-margin-bottom($size) {
+  margin-bottom: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin bd($size) {
+  border-radius: min($size / map-get($breakpoint-scales, pc) * 1vw);
+}
+
+@mixin sp-bd($size) {
+  border-radius: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin sp-height($size) {
+  height: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+
+@mixin sp-left($size) {
+  left: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-right($size) {
+  right: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-bottom($size) {
+  bottom: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}
+@mixin sp-top($size) {
+  top: min($size / map-get($breakpoint-scales, sp) * 1vw);
+}

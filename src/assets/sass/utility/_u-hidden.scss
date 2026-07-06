@@ -1,0 +1,30 @@
+@use "../global" as global;
+.u-pc {
+  // PC時に表示
+  @include global.mq("sp") {
+    display: none;
+  }
+}
+
+.u-sp {
+  // スマホ時に表示
+
+  @include global.mq("ppc") {
+    display: none;
+  }
+  @include global.mq("pc") {
+    display: none;
+  }
+  @include global.mq("tab") {
+    display: none;
+  }
+}
+
+.u-tab {
+  @include global.mq("ppc") {
+    display: none;
+  }
+  @include global.mq("sp") {
+    display: none;
+  }
+}

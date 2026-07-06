@@ -1,0 +1,211 @@
+@use "../global" as global;
+
+.l-footer {
+  position: relative;
+  z-index: map-get(global.$layer, footer);
+  background: global.$main;
+  @include global.padding-top(57);
+  @include global.padding-bottom(40);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(56);
+    @include global.sp-padding-bottom(32);
+  }
+}
+
+.l-footer__inner {
+  @include global.width(1000);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include global.mq(sp) {
+    @include global.sp-width(320);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.l-footer__logo {
+  display: flex;
+  align-items: center;
+  @include global.gap(10);
+
+  @include global.mq(sp) {
+    @include global.sp-gap(8);
+  }
+}
+
+.l-footer__logo-mark {
+  @include global.width(72);
+  @include global.height(68);
+
+  @include global.mq(sp) {
+    @include global.sp-width(48);
+    @include global.sp-height(45);
+  }
+}
+
+.l-footer__logo-tx {
+  color: global.$base;
+  font-family: global.$ff-en;
+  @include global.font(32, 600, 32, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(28, 600, 28, 0);
+  }
+}
+
+.l-footer__address {
+  color: global.$base;
+  @include global.font(16, 500, 20, 0);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    @include global.sp-font(13, 500, 20, 0);
+    @include global.sp-margin-top(16);
+  }
+}
+
+.l-footer__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @include global.gap(2);
+
+  @include global.mq(sp) {
+    @include global.sp-gap(10);
+    @include global.sp-margin-top(32);
+  }
+}
+
+.l-footer__nav-item {
+  position: relative;
+  z-index: 1;
+  color: global.$base;
+  @include global.font(20, 500, 40, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 500, 24, 0);
+  }
+}
+
+// 全ナビ項目ホバーで下線出現（ヘッダーナビと同様・文字幅ぶんのみ）
+.l-footer__nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: min(-4 / 14.4 * 1vw);
+  width: 0;
+  height: 2px;
+  background: global.$base;
+  transition: width 0.3s ease;
+}
+
+.l-footer__nav-item:hover::after {
+  width: 100%;
+}
+
+// サービス（サブメニュー付き）。下方に開くため後続ナビ項目より前面へ
+.l-footer__nav-item--service {
+  z-index: 3;
+  cursor: pointer;
+}
+
+.l-footer__submenu {
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+  left: 0;
+  @include global.margin-top(14);
+  @include global.width(187);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid global.$main;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+// ナビ項目とサブメニューの隙間を埋める透明ブリッジ（ホバーが途切れて消えるのを防ぐ）
+.l-footer__submenu::before {
+  content: "";
+  position: absolute;
+  top: min(-14 / 14.4 * 1vw);
+  left: 0;
+  width: 100%;
+  @include global.height(14);
+}
+
+.l-footer__nav-item--service:hover .l-footer__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.l-footer__submenu-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  color: #000;
+  @include global.font(18, 700, 24, 0);
+  @include global.padding-top(14);
+  @include global.padding-bottom(14);
+  @include global.padding-left(14);
+  border-top: 1px solid global.$main;
+}
+
+.l-footer__submenu-item:first-child {
+  border-top: none;
+}
+
+.l-footer__submenu-item::after {
+  content: "";
+  position: absolute;
+  @include global.left(14);
+  @include global.bottom(10);
+  width: 0;
+  height: 2px;
+  background: global.$main;
+  transition: width 0.3s ease;
+}
+
+.l-footer__submenu-item:hover {
+  color: global.$main;
+  opacity: 1;
+}
+
+.l-footer__submenu-item:hover::after {
+  width: calc(100% - min(28 / 14.4 * 1vw));
+}
+
+.l-footer__line {
+  @include global.width(1000);
+  height: 1px;
+  background: global.$base;
+  margin-left: auto;
+  margin-right: auto;
+  @include global.margin-top(50);
+
+  @include global.mq(sp) {
+    @include global.sp-width(320);
+    @include global.sp-margin-top(40);
+  }
+}
+
+.l-footer__copy {
+  text-align: center;
+  color: global.$base;
+  @include global.font(18, 500, 30, 0);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    @include global.sp-font(13, 500, 20, 0);
+    @include global.sp-margin-top(20);
+  }
+}

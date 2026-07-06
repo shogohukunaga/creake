@@ -1,0 +1,477 @@
+@use "../global" as global;
+
+/* =========================================================
+   ブログ一覧
+========================================================= */
+.l-bloglist {
+  background: #fff;
+  @include global.padding-top(152);
+  @include global.padding-bottom(60);
+
+  @include global.mq(sp) {
+    @include global.sp-padding-top(100);
+    @include global.sp-padding-bottom(48);
+  }
+}
+
+.l-bloglist__ttl {
+  text-align: center;
+  color: global.$tx;
+  @include global.font(48, 700, 60, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(28, 700, 36, 0);
+  }
+}
+
+.l-bloglist__inner {
+  @include global.width(1146);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include global.mq(sp) {
+    @include global.sp-width(350);
+  }
+}
+
+.l-bloglist__bc {
+  @include global.margin-top(32);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(24);
+  }
+}
+
+.l-bloglist__main {
+  display: flex;
+  @include global.gap(48);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    flex-direction: column;
+    @include global.sp-gap(32);
+    @include global.sp-margin-top(24);
+  }
+}
+
+.l-bloglist__side {
+  @include global.width(335);
+  flex-shrink: 0;
+
+  @include global.mq(sp) {
+    width: 100%;
+  }
+}
+
+.l-bloglist__cat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: global.$tx;
+  @include global.font(24, 700, 38, 0);
+  @include global.padding-bottom(10);
+  border-bottom: 2px solid #a9a9a9;
+
+  @include global.mq(sp) {
+    @include global.sp-font(20, 700, 30, 0);
+  }
+}
+
+.l-bloglist__cat-item {
+  display: block;
+  color: global.$tx;
+  @include global.font(20, 500, 32, 0);
+  @include global.padding-top(8);
+  @include global.padding-bottom(8);
+  border-bottom: 2px solid #a9a9a9;
+  transition: opacity 0.3s;
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 500, 28, 0);
+  }
+}
+
+.l-bloglist__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  @include global.gap(40);
+
+  @include global.mq(sp) {
+    grid-template-columns: 1fr;
+    @include global.sp-gap(32);
+  }
+}
+
+.l-bloglist__card {
+  transition: opacity 0.3s;
+}
+
+// カード内リンクをブロック化（画像・タイトル・メタを縦に積む）
+.l-bloglist__card a {
+  display: block;
+}
+
+.l-bloglist__card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2; // 画像は640×427＝3:2。カード幅が可変なので比率で高さを確保
+  overflow: hidden;
+  @include global.bd(4);
+}
+
+.l-bloglist__card-img img {
+  transition: transform 0.4s ease;
+}
+
+.l-bloglist__card:hover .l-bloglist__card-img img {
+  transform: scale(1.06);
+}
+
+.l-bloglist__card-ttl {
+  color: global.$tx;
+  @include global.font(20, 700, 30, 0);
+  @include global.margin-top(16);
+
+  @include global.mq(sp) {
+    @include global.sp-font(17, 700, 26, 0);
+    @include global.sp-margin-top(12);
+  }
+}
+
+.l-bloglist__card-meta {
+  display: flex;
+  align-items: center;
+  @include global.gap(16);
+  @include global.margin-top(12);
+
+  @include global.mq(sp) {
+    @include global.sp-gap(12);
+    @include global.sp-margin-top(8);
+  }
+}
+
+.l-bloglist__card-date {
+  color: global.$tx;
+  @include global.font(18, 400, 24, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(14, 400, 20, 0);
+  }
+}
+
+.l-bloglist__card-cat {
+  background: global.$main;
+  color: #fff;
+  @include global.font(16, 700, 20, 0);
+  @include global.padding(3,8,3,8);
+  @include global.mq(sp) {
+    @include global.sp-font(13, 700, 18, 0);
+    @include global.sp-padding(3,8,3,8);
+  }
+}
+
+.l-bloglist__pager {
+  @include global.margin-top(64);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(40);
+  }
+}
+
+/* =========================================================
+   ブログ詳細
+========================================================= */
+.l-blogsingle {
+  background: #fff;
+  @include global.padding-top(152);
+  @include global.padding-bottom(60);
+
+  @include global.mq(sp) {
+    @include global.sp-padding(96,20,48,20);
+  }
+}
+
+.l-blogsingle__inner {
+  @include global.width(1200);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: flex-start;
+  @include global.gap(60);
+
+  @include global.mq(sp) {
+    width: 100%;
+    flex-direction: column;
+    @include global.sp-gap(40);
+  }
+}
+
+.l-blogsingle__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.l-blogsingle__hero {
+  width: 100%;
+  aspect-ratio: 820 / 420;
+  overflow: hidden;
+  @include global.bd(8);
+  @include global.margin-top(24);
+
+  @include global.mq(sp) {
+    aspect-ratio: 350 / 248;
+    @include global.sp-margin-top(16);
+    @include global.sp-bd(8);
+  }
+}
+
+.l-blogsingle__ttl {
+  color: global.$tx;
+  @include global.font(28, 700, 40, 0);
+  @include global.margin-top(28);
+
+  @include global.mq(sp) {
+    @include global.sp-font(18, 700, 28, 0);
+    @include global.sp-margin-top(20);
+  }
+}
+
+.l-blogsingle__meta {
+  display: flex;
+  align-items: center;
+  @include global.gap(16);
+  @include global.margin-top(16);
+
+  @include global.mq(sp) {
+    @include global.sp-gap(12);
+    @include global.sp-margin-top(12);
+  }
+}
+
+.l-blogsingle__date {
+  color: global.$tx;
+  @include global.font(18, 400, 24, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(14, 400, 20, 0);
+  }
+}
+
+.l-blogsingle__cat {
+  background: global.$main;
+  color: #fff;
+  @include global.font(16, 700, 20, 0);
+  @include global.padding(3,8,3,8);
+
+  @include global.mq(sp) {
+    @include global.sp-font(13, 700, 18, 0);
+    @include global.sp-padding(3,8,3,8);
+  }
+}
+
+.l-blogsingle__lead {
+  color: global.$main;
+  @include global.font(18, 500, 32, 0);
+  @include global.margin-top(28);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-margin-top(20);
+  }
+}
+
+// 目次
+.l-blogsingle__toc {
+  border: 1px solid #a9a9a9;
+  @include global.bd(8);
+  @include global.padding(20,24,24,24);
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    @include global.sp-padding(16,20,20,20);
+    @include global.sp-margin-top(32);
+    @include global.sp-bd(8);
+  }
+}
+
+.l-blogsingle__toc-ttl {
+  text-align: center;
+  color: global.$tx;
+  @include global.font(22, 700, 30, 0);
+  @include global.margin-bottom(12);
+
+  @include global.mq(sp) {
+    @include global.sp-font(17, 700, 26, 0);
+  }
+}
+
+.l-blogsingle__toc-item {
+  display: block;
+  color: global.$tx;
+  @include global.font(18, 500, 34, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 30, 0);
+  }
+}
+
+// 見出し（ナビー縦棒マーカー付き）
+.l-blogsingle__sec {
+  @include global.margin-top(40);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(32);
+  }
+}
+
+.l-blogsingle__sec-ttl {
+  position: relative;
+  z-index: 1;
+  color: global.$tx;
+  @include global.font(22, 700, 32, 0);
+  @include global.padding-left(20);
+
+  @include global.mq(sp) {
+    @include global.sp-font(16, 700, 26, 0);
+    @include global.sp-padding-left(16);
+  }
+}
+
+.l-blogsingle__sec-ttl::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  @include global.width(8);
+  @include global.height(30);
+  background: global.$main;
+
+  @include global.mq(sp) {
+    @include global.sp-width(6);
+    @include global.sp-height(24);
+  }
+}
+
+.l-blogsingle__sec-tx {
+  color: global.$tx;
+  @include global.font(18, 500, 30, 0);
+  @include global.margin-top(16);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-margin-top(12);
+  }
+}
+
+.l-blogsingle__pager {
+  @include global.margin-top(56);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(40);
+  }
+}
+
+.l-blogsingle__btn {
+  @include global.margin-top(32);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-top(24);
+  }
+}
+
+// サイドバー（最新記事／おすすめの記事）
+.l-blogsingle__aside {
+  @include global.width(320);
+  flex-shrink: 0;
+
+  @include global.mq(sp) {
+    width: 100%;
+  }
+}
+
+.l-blogside {
+  @include global.margin-bottom(48);
+
+  @include global.mq(sp) {
+    @include global.sp-margin-bottom(32);
+  }
+}
+
+.l-blogside__ttl {
+  position: relative;
+  z-index: 1;
+  color: global.$tx;
+  @include global.font(22, 700, 32, 0);
+  @include global.padding-left(24);
+  @include global.margin-bottom(16);
+
+  @include global.mq(sp) {
+    @include global.sp-font(18, 700, 28, 0);
+    @include global.sp-padding-left(24);
+  }
+}
+
+.l-blogside__ttl::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  @include global.width(11);
+  @include global.height(32);
+  background: global.$main;
+
+  @include global.mq(sp) {
+    @include global.sp-width(11);
+    @include global.sp-height(32);
+  }
+}
+
+.l-blogside__item {
+  display: flex;
+  align-items: center;
+  @include global.gap(20);
+  @include global.padding-top(12);
+  @include global.padding-bottom(12);
+  border-bottom: 1px solid #a9a9a9;
+
+  @include global.mq(sp) {
+    @include global.sp-gap(20);
+    @include global.sp-padding-top(12);
+    @include global.sp-padding-bottom(12);
+  }
+}
+
+.l-blogside__item-img {
+  @include global.width(140);
+  @include global.height(98);
+  flex-shrink: 0;
+  overflow: hidden;
+  @include global.bd(4);
+
+  @include global.mq(sp) {
+    @include global.sp-width(140);
+    @include global.sp-height(98);
+  }
+}
+
+.l-blogside__item-date {
+  color: global.$tx;
+  @include global.font(16, 400, 24, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(14, 400, 22, 0);
+  }
+}
+
+.l-blogside__item-ttl {
+  color: global.$tx;
+  @include global.font(18, 500, 28, 0);
+  @include global.margin-top(6);
+
+  @include global.mq(sp) {
+    @include global.sp-font(15, 500, 24, 0);
+  }
+}
