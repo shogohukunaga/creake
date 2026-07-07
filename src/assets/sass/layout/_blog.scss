@@ -67,6 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
   color: global.$tx;
   @include global.font(24, 700, 38, 0);
   @include global.padding-bottom(10);
@@ -75,6 +76,25 @@
   @include global.mq(sp) {
     @include global.sp-font(20, 700, 30, 0);
   }
+}
+
+// 既定（閉）は矢印を反転（▼）、is-open で ▲ に戻す
+.l-bloglist__cat-mark {
+  flex-shrink: 0;
+  transform: rotate(180deg);
+  transition: transform 0.3s;
+}
+
+.l-bloglist__side.is-open .l-bloglist__cat-mark {
+  transform: rotate(0deg);
+}
+
+.l-bloglist__cat-list {
+  display: none;
+}
+
+.l-bloglist__side.is-open .l-bloglist__cat-list {
+  display: block;
 }
 
 .l-bloglist__cat-item {

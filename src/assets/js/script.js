@@ -29,9 +29,43 @@ import "./_nav.min.js";
     }
   });
 
+  // --- オープニングのロゴ文字を1文字ずつ出現 ---
+  (function setupOpeningReveal() {
+    const openingTx = document.querySelector(".l-opening__tx");
+    if (!openingTx) return;
+
+    const text = openingTx.textContent.trim();
+    if (!text) return;
+
+    // スクリーンリーダー用に元の単語を保持し、表示文字は装飾扱い
+    openingTx.setAttribute("aria-label", text);
+    openingTx.textContent = "";
+
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    Array.from(text).forEach(function (ch, i) {
+      const span = document.createElement("span");
+      span.className = "l-opening__char";
+      span.setAttribute("aria-hidden", "true");
+      span.textContent = ch;
+      // 動き軽減時は遅延なしで即表示
+      if (!reduce) {
+        span.style.animationDelay = (0.2 + i * 0.1).toFixed(2) + "s";
+      }
+      openingTx.appendChild(span);
+    });
+  })();
+
   // --- FAQアコーディオン ---
   $(".l-serv-faq__q").on("click", function () {
     $(this).closest(".l-serv-faq__item").toggleClass("is-open");
+  });
+
+  // --- ブログ一覧 カテゴリー開閉 ---
+  $(".l-bloglist__cat-head").on("click", function () {
+    $(this).closest(".l-bloglist__side").toggleClass("is-open");
   });
 
   // --- ページ内移動 ---

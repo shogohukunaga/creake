@@ -82,10 +82,24 @@
   color: #fff;
   font-family: global.$ff-en;
   @include global.font(48, 600, 48, 0);
-  animation: openingLogoIn 1.2s ease forwards;
 
   @include global.mq(sp) {
     @include global.sp-font(36, 600, 36, 0);
+  }
+}
+
+// JSで1文字ずつ span 化された各文字（順番にフェードイン）
+.l-opening__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.35em);
+  animation: openingCharIn 0.5s ease forwards;
+}
+
+@keyframes openingCharIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
