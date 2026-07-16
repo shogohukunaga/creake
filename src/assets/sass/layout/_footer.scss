@@ -9,7 +9,8 @@
 
   @include global.mq(sp) {
     @include global.sp-padding-top(56);
-    @include global.sp-padding-bottom(32);
+    // 固定CTAバー（高さ60）に隠れないよう下に逃げ余白を足す
+    @include global.sp-padding-bottom(92);
   }
 }
 
@@ -22,7 +23,7 @@
   justify-content: space-between;
 
   @include global.mq(sp) {
-    @include global.sp-width(320);
+    @include global.sp-width(304);
     flex-direction: column;
     align-items: flex-start;
   }
@@ -43,8 +44,8 @@
   @include global.height(68);
 
   @include global.mq(sp) {
-    @include global.sp-width(48);
-    @include global.sp-height(45);
+    @include global.sp-width(36);
+    @include global.sp-height(36);
   }
 }
 
@@ -54,7 +55,7 @@
   @include global.font(32, 600, 32, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(28, 600, 28, 0);
+    @include global.sp-font(22, 600, 25, 0);
   }
 }
 
@@ -64,7 +65,7 @@
   @include global.margin-top(24);
 
   @include global.mq(sp) {
-    @include global.sp-font(13, 500, 20, 0);
+    @include global.sp-font(16, 700, 20, 0);
     @include global.sp-margin-top(16);
   }
 }
@@ -76,8 +77,8 @@
   @include global.gap(2);
 
   @include global.mq(sp) {
-    @include global.sp-gap(10);
-    @include global.sp-margin-top(32);
+    @include global.sp-gap(20);
+    @include global.sp-margin-top(36);
   }
 }
 
@@ -88,7 +89,7 @@
   @include global.font(20, 500, 40, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(16, 500, 24, 0);
+    @include global.sp-font(18, 700, 20, 0);
   }
 }
 
@@ -193,8 +194,8 @@
   @include global.margin-top(50);
 
   @include global.mq(sp) {
-    @include global.sp-width(320);
-    @include global.sp-margin-top(40);
+    @include global.sp-width(300);
+    @include global.sp-margin-top(72);
   }
 }
 
@@ -205,7 +206,7 @@
   @include global.margin-top(24);
 
   @include global.mq(sp) {
-    @include global.sp-font(13, 500, 20, 0);
-    @include global.sp-margin-top(20);
+    @include global.sp-font(16, 500, 30, 0);
+    @include global.sp-margin-top(8);
   }
 }

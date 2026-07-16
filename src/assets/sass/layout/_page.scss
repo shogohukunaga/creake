@@ -53,6 +53,7 @@
   grid-template-columns: repeat((2), 1fr);
   gap: min(27 / 14.4 * 1vw) /*height*/ min(130 / 14.4 * 1vw) /*wight*/;
   @include global.mq(sp) {
+    display: flex;
     flex-direction: column;
     @include global.sp-gap(14);
   }
@@ -150,8 +151,7 @@
 
   @include global.mq(sp) {
     @include global.sp-font(12, 700, 16, 0);
-    @include global.sp-padding-left(6);
-    @include global.sp-padding-right(6);
+    @include global.sp-padding(2, 6, 2, 6);
   }
 }
 
@@ -210,6 +210,10 @@
   color: global.$tx;
   @include global.font(20, 500, 30, 0);
   @include global.margin-bottom(16);
+
+  &:hover {
+    text-decoration: underline;
+  }
 
   @include global.mq(sp) {
     @include global.sp-font(15, 500, 24, 0);
@@ -319,7 +323,7 @@
 .l-privacy__inner {
   @include global.margin(0, 70, 0, 70);
   @include global.mq(sp) {
-    @include global.sp-margin(0, 20, 0, 20);
+    @include global.sp-margin(0, 0, 0, 0);
   }
 }
 

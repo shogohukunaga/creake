@@ -60,22 +60,41 @@
 	<div class="p-drawer__background"></div>
 	<div class="l-drawer">
 		<nav class="l-drawer__nav">
+			<a href="./index.html" class="l-drawer__nav-item">ホーム</a>
 			<a href="./about.html" class="l-drawer__nav-item">私たちについて</a>
-			<a href="./service.html" class="l-drawer__nav-item">サービス</a>
+			<a href="./service.html" class="l-drawer__nav-item">Instagram制作代行</a>
+			<a href="./service.html#service-what" class="l-drawer__nav-item l-drawer__nav-item--sub">・サービス内容</a>
+			<a href="./service.html#service-flow" class="l-drawer__nav-item l-drawer__nav-item--sub">・制作の流れ</a>
+			<a href="./service.html#service-price" class="l-drawer__nav-item l-drawer__nav-item--sub">・料金プラン</a>
+			<a href="./service.html#service-faq" class="l-drawer__nav-item l-drawer__nav-item--sub">・よくある質問</a>
+			<a href="#" class="l-drawer__nav-item">YouTube制作代行</a>
+			<a href="#" class="l-drawer__nav-item">MEO対策</a>
+			<a href="#" class="l-drawer__nav-item">SEO対策</a>
 			<a href="./works.html" class="l-drawer__nav-item">成果事例</a>
 			<a href="./news.html" class="l-drawer__nav-item">ニュース</a>
 			<a href="./blog.html" class="l-drawer__nav-item">ブログ</a>
 		</nav>
 		<div class="l-drawer__cta">
-			<a href="./contact.html" class="l-drawer__btn l-drawer__btn--doc">無料資料請求</a>
-			<a href="./contact.html" class="l-drawer__btn l-drawer__btn--contact">お問い合わせ</a>
+			<a href="./contact.html" class="l-drawer__btn l-drawer__btn--doc">
+				<span class="l-drawer__btn-icon l-drawer__btn-icon--book"><img src="./assets/img/pc/cta-book.webp" alt="" width="52" height="44" loading="lazy" /></span>
+				無料資料請求
+			</a>
+			<a href="./contact.html" class="l-drawer__btn l-drawer__btn--contact">
+				<span class="l-drawer__btn-icon l-drawer__btn-icon--mail"><img src="./assets/img/pc/fv-ico-mail.webp" alt="" width="35" height="35" loading="lazy" /></span>
+				お問い合わせ
+			</a>
 		</div>
 	</div>
 
 	<main class="over">
 		<!-- ==================== FV ==================== -->
 		<section class="l-serv-fv">
-			<span class="l-serv-fv__shape"><img src="./assets/img/pc/serv-fv-shape.svg" alt="" /></span>
+			<span class="l-serv-fv__shape">
+				<picture>
+					<source media="(max-width: 767px)" srcset="./assets/img/sp/serv-fv-shape-sp.svg" />
+					<img src="./assets/img/pc/serv-fv-shape.svg" alt="" />
+				</picture>
+			</span>
 			<div class="l-serv-fv__inner">
 				<p class="l-serv-fv__ttl">集客とブランディングを叶える</p>
 				<p class="l-serv-fv__sub">工務店専門Instagram制作</p>
@@ -102,39 +121,20 @@
 				<a href="./contact.html" class="l-serv-fv__btn">お問い合わせ</a>
 			</div>
 			<p class="l-serv-fv__vtext">SNSマーケティングのプロ集団が制作</p>
-			<div class="l-serv-fv__badge">
-				<p class="l-serv-fv__badge-ttl">1本あたりの<br />制作費用</p>
-				<p class="l-serv-fv__badge-num">20,000円</p>
-				<p class="l-serv-fv__badge-zei">(税別)</p>
-				<p class="l-serv-fv__badge-sub">業界最安水準</p>
-			</div>
 			<div class="l-serv-fv__phone">
-				<div class="l-serv-fv__screen">
-					<span class="l-serv-fv__phone-img"><img src="./assets/img/pc/serv-post.webp" alt="" /></span>
-					<div class="l-serv-fv__phone-panel">
-						<div class="l-serv-fv__phone-account">
-							<span class="l-serv-fv__phone-avatar"><img src="./assets/img/pc/serv-ig-house.webp" alt="" /></span>
-							<p class="l-serv-fv__phone-user">tatemono_</p>
-							<span class="l-serv-fv__phone-follow">フォロー</span>
-						</div>
-						<p class="l-serv-fv__phone-cap">
-							「こうあるべき」から、ちょっと自由になってみる。<br /><br />
-							「間取りのことばかり考えて疲れた」<br />
-							「いろんな家を見たけれど、どこかしっくりこない」<br />
-							そんなふうに感じている方へ。<br /><br />
-							暮らしのこと、予算のこと、デザインのこと。どんな小さなことでも気軽に相談できる見学会です。
-						</p>
-					</div>
-					<div class="l-serv-fv__phone-icons">
-						<span><img src="./assets/img/pc/serv-ig-heart.svg" alt="" /></span>
-						<span><img src="./assets/img/pc/serv-ig-chat.svg" alt="" /></span>
-						<span><img src="./assets/img/pc/serv-ig-repeat.svg" alt="" /></span>
-						<span><img src="./assets/img/pc/serv-ig-send.svg" alt="" /></span>
-						<span><img src="./assets/img/pc/serv-ig-dots.svg" alt="" /></span>
-					</div>
-				</div>
+				<img src="./assets/img/pc/serv-fv__phone.webp" alt="" />
 			</div>
 		</section>
+
+		<!-- 制作費用バッジ（ヘッダーより上に重ねるためセクション外に配置） -->
+		<div class="l-serv-fv__badge">
+			<p class="l-serv-fv__badge-ttl">1本あたりの<br />制作費用</p>
+			<p class="l-serv-fv__badge-num">
+				20,000<span class="l-serv-fv__badge-yen">円</span>
+			</p>
+			<p class="l-serv-fv__badge-zei">(税別)</p>
+			<p class="l-serv-fv__badge-sub">業界最安水準</p>
+		</div>
 
 		<!-- 縦型フローティングCTA（PC） -->
 		<div class="l-fv__side">
@@ -152,8 +152,14 @@
 			</a>
 		</div>
 		<div class="l-cta">
-			<a href="./contact.html" class="l-cta__btn l-cta__btn--doc">無料資料請求</a>
-			<a href="./contact.html" class="l-cta__btn l-cta__btn--contact">お問い合わせ</a>
+			<a href="./contact.html" class="l-cta__btn l-cta__btn--doc">
+				<span class="l-cta__icon l-cta__icon--book"><img src="./assets/img/pc/cta-book.webp" alt="" width="52" height="44" loading="lazy" /></span>
+				無料資料請求
+			</a>
+			<a href="./contact.html" class="l-cta__btn l-cta__btn--contact">
+				<span class="l-cta__icon l-cta__icon--mail"><img src="./assets/img/pc/fv-ico-mail.webp" alt="" width="35" height="35" loading="lazy" /></span>
+				お問い合わせ
+			</a>
 		</div>
 
 		<!-- ==================== こんなお悩み ==================== -->
@@ -163,13 +169,13 @@
 				<li class="l-serv-worry__row">
 					<span class="l-serv-worry__char l-serv-worry__char--1"></span>
 					<p class="l-serv-worry__bubble">
-						制作事例はあるが、投稿用に整っていない<br />投稿の統一感がなく世界観がバラつく
+						制作事例はあるが、<br class="u-sp" />投稿用に整っていない<br />投稿の統一感がなく世界観がバラつく
 					</p>
 				</li>
 				<li class="l-serv-worry__row l-serv-worry__row--rev">
 					<span class="l-serv-worry__char l-serv-worry__char--2"></span>
 					<p class="l-serv-worry__bubble l-serv-worry__bubble--rev">
-						どう見せればいいかわからない<br />社内で作ると手が回らず更新が止まる
+						どう見せればいいか<br class="u-sp" />わからない<br />社内で作ると<br class="u-sp" />手が回らず更新が止まる
 					</p>
 				</li>
 			</ul>
@@ -179,7 +185,7 @@
 		<section class="l-serv-solve">
 			<span class="l-serv-solve__polytop"><img src="./assets/img/pc/serv-corner-blue.svg" alt="" /></span>
 			<p class="l-serv-solve__head">解決いたします！</p>
-			<div class="c-serv-ttl">CREAKEが完成された投稿素材をまとめて制作</div>
+			<div class="c-serv-ttl">イエサツが完成された投稿素材をまとめて制作</div>
 			<ul class="l-serv-solve__list">
 				<li class="l-serv-solve__row">
 					<div class="l-serv-solve__label">統一された世界観で信頼度UP</div>
@@ -217,8 +223,8 @@
 			<span class="l-serv-why__polytop"><img src="./assets/img/pc/serv-corner-white.svg" alt="" /></span>
 			<div class="c-serv-ttl">なぜ『制作代行』なのか？</div>
 			<p class="l-serv-why__lead">
-				イエサツはコンテンツ制作に特化することで <br />
-				御社のInstagram運用をより効果的にサポートします。
+				イエサツはコンテンツ制作に<br class="u-sp" />特化することで <br />
+				御社のInstagram運用を<br class="u-sp" />より効果的にサポートします。
 			</p>
 			<ul class="l-serv-why__list">
 				<li class="l-serv-why__item">
@@ -228,7 +234,7 @@
 						<p class="l-serv-why__ttl">運用は会社経営の一部だから</p>
 						<div class="l-serv-why__line"></div>
 						<p class="l-serv-why__tx">
-							アカウントの運用方針や戦略は会社の経営判断と密接に関わります。外部が代行するのではなく、御社が主体となって運用できる環境を整えます。
+							アカウントの運用方針や戦略は会社の経営<br class="u-sp">判断と密接に関わります。<br class="u-sp">外部が代行するのではなく、<br class="u-sp">御社が主体となって運用できる環境を整えます。
 						</p>
 					</div>
 				</li>
@@ -237,11 +243,11 @@
 					<div class="l-serv-why__body">
 						<p class="l-serv-why__num">02</p>
 						<p class="l-serv-why__ttl">
-							制作に特化することで、コストを抑えられる
+							制作に特化することで、<br class="u-sp">コストを抑えられる
 						</p>
 						<div class="l-serv-why__line"></div>
 						<p class="l-serv-why__tx">
-							範囲を制作のみに限定することで、質の高いコンテンツを低コストで提供できます。
+							範囲を制作のみに限定することで、<br class="u-sp">質の高いコンテンツを<br class="u-sp">低コストで提供できます。
 						</p>
 					</div>
 				</li>
@@ -252,7 +258,7 @@
 						<p class="l-serv-why__ttl">社内での使い勝手が良くなる</p>
 						<div class="l-serv-why__line"></div>
 						<p class="l-serv-why__tx">
-							完成した素材をストックしておけば、投稿タイミングや内容を柔軟に調整可能。急な予定変更にも対応できます。
+							完成した素材をストックしておけば、<br class="u-sp">投稿タイミングや内容を柔軟に調整可能。<br class="u-sp">急な予定変更にも対応できます。
 						</p>
 					</div>
 				</li>
@@ -261,11 +267,11 @@
 					<div class="l-serv-why__body">
 						<p class="l-serv-why__num">04</p>
 						<p class="l-serv-why__ttl">
-							アカウントリスクを最小限に抑えられる
+							アカウントリスクを<br class="u-sp">最小限に抑えられる
 						</p>
 						<div class="l-serv-why__line"></div>
 						<p class="l-serv-why__tx">
-							アカウントの管理権限を外部に渡すリスクを避け、セキュリティを確保。安心してご利用いただけます。
+							アカウントの管理権限を外部に渡す<br class="u-sp">リスクを避け、セキュリティを確保。<br class="u-sp">安心してご利用いただけます。
 						</p>
 					</div>
 				</li>
@@ -273,18 +279,18 @@
 		</section>
 
 		<!-- ==================== どんなサービス？ ==================== -->
-		<section class="l-serv-what">
+		<section id="service-what" class="l-serv-what">
 			<div class="c-serv-ttl">どんなサービス？</div>
 			<p class="l-serv-what__lead">
-				コストを抑えながら高品質なコンテンツを提供します
+				コストを抑えながら高品質な<br class="u-sp" />コンテンツを提供します
 			</p>
 			<div class="l-serv-what__box">
-				<p>・投稿用の完成したビジュアルコンテンツ</p>
-				<p>・キャプションの文の作成</p>
-				<p>・世界観・トンマナの統一</p>
-				<p>・企画・構成案の提案</p>
-				<p>・投稿に使えるハッシュタグの提案</p>
-				<p>・修正対応（規定回数内）</p>
+				<p>投稿用の完成した<br class="u-sp" />ビジュアルコンテンツ</p>
+				<p>キャプションの文の作成</p>
+				<p>世界観・トンマナの統一</p>
+				<p>企画・構成案の提案</p>
+				<p>投稿に使える<br class="u-sp" />ハッシュタグの提案</p>
+				<p>修正対応（規定回数内）</p>
 			</div>
 			<div class="l-serv-what__price">
 				<p class="l-serv-what__price-ttl">1本あたりの制作費用</p>
@@ -294,10 +300,10 @@
 		</section>
 
 		<!-- ==================== 制作の流れ ==================== -->
-		<section class="l-serv-flow">
+		<section id="service-flow" class="l-serv-flow">
 			<div class="c-serv-ttl">制作の流れ</div>
 			<p class="l-serv-flow__lead">
-				スムーズな進行で、高品質なコンテンツをお届けします
+				スムーズな進行で、<br class="u-sp" />高品質なコンテンツをお届けします
 			</p>
 			<ul class="l-serv-flow__list">
 				<li class="l-serv-flow__item">
@@ -305,7 +311,7 @@
 					<div>
 						<p class="l-serv-flow__ttl">事前打ち合わせ</p>
 						<p class="l-serv-flow__tx">
-							ご要望やブランドイメージ、ターゲット層などをヒアリング
+							ご要望やブランドイメージ、ターゲット層などを<br class="u-sp">ヒアリング
 						</p>
 					</div>
 				</li>
@@ -314,7 +320,7 @@
 					<div>
 						<p class="l-serv-flow__ttl">素材確認・方向性整理</p>
 						<p class="l-serv-flow__tx">
-							お持ちの施工事例写真(出張撮影も対応可能)や素材を確認し、投稿の方向性を整理
+							お持ちの施工事例写真<br class="u-sp">(出張撮影も対応可能)や素材を確認し、<br class="u-sp">投稿の方向性を整理
 						</p>
 					</div>
 				</li>
@@ -323,7 +329,7 @@
 					<div>
 						<p class="l-serv-flow__ttl">企画案の作成・共有</p>
 						<p class="l-serv-flow__tx">
-							投稿コンセプトやトンマナを企画書にまとめ、ご確認
+							投稿コンセプトやトンマナを<br class="u-sp">企画書にまとめ、ご確認
 						</p>
 					</div>
 				</li>
@@ -332,7 +338,7 @@
 					<div>
 						<p class="l-serv-flow__ttl">コンテンツ制作</p>
 						<p class="l-serv-flow__tx">
-							動画制作、キャプション作成、ハッシュタグ選定
+							動画制作、キャプション作成、<br class="u-sp">ハッシュタグ選定
 						</p>
 					</div>
 				</li>
@@ -341,7 +347,7 @@
 					<div>
 						<p class="l-serv-flow__ttl">確認・修正</p>
 						<p class="l-serv-flow__tx">
-							制作物をご確認いただき、必要に応じて修正対応
+							制作物をご確認いただき、<br class="u-sp">必要に応じて修正対応
 						</p>
 					</div>
 				</li>
@@ -350,7 +356,7 @@
 					<div>
 						<p class="l-serv-flow__ttl">納品</p>
 						<p class="l-serv-flow__tx">
-							完成したコンテンツ一式をお渡しし、投稿準備完了
+							完成したコンテンツ一式をお渡しし、<br class="u-sp">投稿準備完了
 						</p>
 					</div>
 				</li>
@@ -364,44 +370,44 @@
 				<li class="l-serv-reco__item">
 					<span class="l-serv-reco__ic l-serv-ic l-serv-ic--reco1"></span>
 					<p class="l-serv-reco__tx">
-						Instagramの立ち上げを検討しているが、どうすればいいかわからない
+						Instagramの立ち上げを<br class="u-sp" />検討しているが、<br class="u-sp" />どうすればいいかわからない
 					</p>
 				</li>
 				<li class="l-serv-reco__item">
 					<span class="l-serv-reco__ic l-serv-ic l-serv-ic--reco2"></span>
 					<p class="l-serv-reco__tx">
-						施工事例は豊富だが、SNS用の見せ方がわからない
+						施工事例は豊富だが、<br class="u-sp" />SNS用の見せ方がわからない
 					</p>
 				</li>
 				<li class="l-serv-reco__item">
 					<span class="l-serv-reco__ic l-serv-ic l-serv-ic--reco3"></span>
 					<p class="l-serv-reco__tx">
-						Instagram運用に興味はあるが、社内リソースが限られている
+						Instagram運用に興味はあるが、<br class="u-sp" />社内リソースが限られている
 					</p>
 				</li>
 				<li class="l-serv-reco__item">
 					<span class="l-serv-reco__ic l-serv-ic l-serv-ic--reco4"></span>
 					<p class="l-serv-reco__tx">
-						統一感のあるブランディングを確立したい
+						統一感のあるブランディングを<br class="u-sp" />確立したい
 					</p>
 				</li>
 				<li class="l-serv-reco__item">
 					<span class="l-serv-reco__ic l-serv-ic l-serv-ic--reco5"></span>
 					<p class="l-serv-reco__tx">
-						投稿の質を上げて、問い合わせにつなげたい
+						投稿の質を上げて、<br class="u-sp" />問い合わせにつなげたい
 					</p>
 				</li>
 			</ul>
-			<p class="l-serv-reco__note">
+			<p class="l-serv-reco__note u-pc">
 				上記に一つでも当てはまる場合は、ぜひ一度ご相談ください。
 			</p>
 		</section>
 
 		<!-- ==================== 料金プラン ==================== -->
-		<section class="l-serv-price">
+		<section id="service-price" class="l-serv-price">
 			<div class="c-serv-ttl">料金プラン</div>
 			<p class="l-serv-price__lead">
-				ご予算や投稿頻度に合わせてお選びいただけます
+				ご予算や投稿頻度に合わせて<br class="u-sp">お選びいただけます
 			</p>
 			<p class="l-serv-price__most"><span>▼</span>&nbsp;最も選ばれるプラン</p>
 			<ul class="l-serv-price__list">
@@ -418,6 +424,9 @@
 					</div>
 				</li>
 				<li class="l-serv-price__plan">
+					<p class="l-serv-price__most l-serv-price__most--sp">
+						<span>▼</span>&nbsp;最も選ばれるプラン
+					</p>
 					<div class="l-serv-price__tab l-serv-price__tab--std">
 						スタンダードプラン
 					</div>
@@ -445,7 +454,7 @@
 		</section>
 
 		<!-- ==================== よくある質問 ==================== -->
-		<section class="l-serv-faq">
+		<section id="service-faq" class="l-serv-faq">
 			<div class="c-serv-ttl">よくある質問</div>
 			<ul class="l-serv-faq__list">
 				<li class="l-serv-faq__item">
@@ -510,12 +519,13 @@
 			<nav class="l-footer__nav">
 				<a href="./index.html" class="l-footer__nav-item">ホーム</a>
 				<a href="./about.html" class="l-footer__nav-item">私たちについて</a>
-				<a href="./service.html" class="l-footer__nav-item">サービス</a>
+				<a href="./service.html" class="l-footer__nav-item">Instagram制作代行</a>
+				<a href="#" class="l-footer__nav-item">YouTube制作代行</a>
+				<a href="#" class="l-footer__nav-item">MEO対策</a>
+				<a href="#" class="l-footer__nav-item">SEO対策</a>
 				<a href="./works.html" class="l-footer__nav-item">成果事例</a>
 				<a href="./news.html" class="l-footer__nav-item">ニュース</a>
 				<a href="./blog.html" class="l-footer__nav-item">ブログ</a>
-				<a href="./contact.html" class="l-footer__nav-item">お問い合わせ</a>
-				<a href="./contact.html" class="l-footer__nav-item">無料資料請求</a>
 				<a href="./privacy.html" class="l-footer__nav-item">プライバシーポリシー</a>
 			</nav>
 		</div>

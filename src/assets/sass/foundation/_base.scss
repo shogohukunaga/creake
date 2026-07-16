@@ -8,6 +8,7 @@ body {
   @each $breakpoint in ("sp") {
     @include global.mq($breakpoint) {
       @include global.sp-font(15, 400, 30, 0);
+      @include global.sp-padding-top(70);
     }
   }
 }

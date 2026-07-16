@@ -45,8 +45,21 @@
 }
 
 // 明るい写真ヒーロー（白背景・濃色タイトル。ニュース一覧など）
+// SP改訂版（98:390）：SPのみ写真を暗くして白文字にする（紺背景＋オーバーレイ）
 .l-pagehead--light {
   background: #fff;
+
+  @include global.mq(sp) {
+    background: global.$main;
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: rgba(125, 134, 151, 0.5);
+    }
+  }
 }
 
 .l-pagehead__ttl {
@@ -63,6 +76,9 @@
 // モディファイアはベース（.l-pagehead__ttl）より後に書く（後勝ちで上書きするため）
 .l-pagehead__ttl--dark {
   color: global.$tx;
+  @include global.mq("sp") {
+    color: white;
+  }
 }
 
 .l-pagehead__ttl--sm {
@@ -94,5 +110,36 @@
 
   @include global.mq(sp) {
     @include global.sp-font(13, 500, 18, 0);
+  }
+}
+
+// SP改訂版（98:254）：パンくずを紺ヘッダー内・白でタイトル上に表示。
+// PCは本文上のパンくず（.l-breadcrumb--body 等）を使うため非表示。
+.l-breadcrumb--hero {
+  display: none;
+
+  @include global.mq(sp) {
+    display: block;
+    position: relative;
+    z-index: 2; // ヒーローのオーバーレイ（z-index:1）より前面に出す
+    color: #fff;
+    @include global.sp-font(14, 700, 18, 0);
+    @include global.sp-margin-bottom(24);
+  }
+}
+
+// about：パンくずが元からヒーロー内（PC/SP）にあるため、PCは現状のまま・SPのみ白＋サイズ調整
+.l-breadcrumb--hero-sp {
+  @include global.mq(sp) {
+    color: #fff;
+    @include global.sp-font(14, 700, 18, 0);
+    @include global.sp-margin-bottom(24);
+  }
+}
+
+// 本文上のパンくず（PC表示・SPはヒーロー内に移すため非表示）
+.l-breadcrumb--body {
+  @include global.mq(sp) {
+    display: none;
   }
 }

@@ -68,9 +68,48 @@ import "./_nav.min.js";
     $(this).closest(".l-bloglist__side").toggleClass("is-open");
   });
 
+  // --- ブログ一覧 カテゴリー絞り込み ---
+  // クリックで選択（文字色を赤に）→ 該当カテゴリーの記事を最新の日付順に表示
+  (function setupBlogCategoryFilter() {
+    const $catItems = $(".l-bloglist__cat-item");
+    const $grid = $(".l-bloglist__grid");
+    if (!$catItems.length || !$grid.length) return;
+
+    // 初期状態は「全て」を選択
+    $catItems.first().addClass("is-active");
+
+    $catItems.on("click", function (e) {
+      e.preventDefault();
+
+      $catItems.removeClass("is-active");
+      $(this).addClass("is-active");
+
+      const cat = $(this).text().trim();
+      const $cards = $grid.children(".l-bloglist__card");
+
+      // 最新の日付順（降順）に並べ替え
+      $cards
+        .sort(function (a, b) {
+          const dateA = $(a).find(".l-bloglist__card-date").text().trim();
+          const dateB = $(b).find(".l-bloglist__card-date").text().trim();
+          return dateB.localeCompare(dateA);
+        })
+        .appendTo($grid);
+
+      // 選択カテゴリーの記事のみ表示（「全て」は全件表示）
+      $cards.each(function () {
+        const cardCat = $(this).find(".l-bloglist__card-cat").text().trim();
+        $(this).toggle(cat === "全て" || cardCat === cat);
+      });
+    });
+  })();
+
   // --- ページ内移動 ---
   $(function () {
-    $('a[href^="#"]').on("click", function (e) {
+    // カテゴリー絞り込みリンク（href="#"）はページ内移動の対象外
+    $('a[href^="#"]')
+      .not(".l-bloglist__cat-item")
+      .on("click", function (e) {
       e.preventDefault();
 
       const targetId = $(this).attr("href");

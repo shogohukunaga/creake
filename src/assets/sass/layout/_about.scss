@@ -21,7 +21,8 @@
   @include global.margin-top(24);
 
   @include global.mq(sp) {
-    @include global.sp-font(20, 700, 30, 0);
+    // Figma SP は 18px（20px だと「…広報の／力に」で折り返す）
+    @include global.sp-font(18, 700, 28, 0);
     @include global.sp-margin-top(16);
   }
 }
@@ -56,7 +57,8 @@
     align-items: stretch;
     width: 100%;
     padding-top: 0;
-    padding-bottom: 0;
+    // 画像下にグレーを少し残す（Figma: 画像下 16px）
+    @include global.sp-padding-bottom(16);
   }
 }
 
@@ -65,7 +67,8 @@
 
   @include global.mq(sp) {
     width: 100%;
-    @include global.sp-padding(32,20,24,20);
+    // バッジはグレー枠の左上に密着（Figma: top=セクション上端）
+    @include global.sp-padding(0,20,24,20);
   }
 }
 
@@ -76,6 +79,7 @@
   @include global.width(172);
   @include global.height(72);
   background: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   color: global.$tx;
   @include global.font(32, 400, 32, 0);
 
@@ -92,7 +96,8 @@
   @include global.margin-top(20);
 
   @include global.mq(sp) {
-    @include global.sp-font(20, 700, 30, 0);
+    // Figma SP は 18px（20px だと 2 行目がさらに折り返す）
+    @include global.sp-font(18, 700, 30, 0);
     @include global.sp-margin-top(16);
   }
 }
@@ -103,7 +108,7 @@
   @include global.margin-top(24);
 
   @include global.mq(sp) {
-    @include global.sp-font(15, 400, 26, 0);
+    @include global.sp-font(16, 500, 28, 0);
     @include global.sp-margin-top(16);
   }
 }
@@ -117,6 +122,8 @@
   @include global.mq(sp) {
     width: 100%;
     @include global.sp-height(240);
+    // PC の上方向オフセットを打ち消し、セクション下部に敷く
+    top: 0;
   }
 }
 
@@ -163,7 +170,11 @@
     @include global.sp-height(48);
     @include global.sp-padding-left(16);
     @include global.sp-padding-right(16);
-    @include global.sp-font(20, 500, 20, 0);
+    @include global.sp-font(18, 500, 18, 0);
+    // Figma SP はカード左上に密着・枠線ではなく影
+    transform: none;
+    border: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -171,8 +182,9 @@
   @include global.padding-left(54);
 
   @include global.mq(sp) {
-    @include global.sp-padding-left(12);
-    @include global.sp-padding-right(12);
+    // SP は本文をバッジ左端に揃える（Figma: text left=19）
+    padding-left: 0;
+    @include global.sp-margin-top(16);
   }
 }
 
@@ -181,7 +193,7 @@
   @include global.font(32, 700, 40, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(20, 700, 28, 0);
+    @include global.sp-font(16, 700, 24, 0);
   }
 }
 
@@ -190,7 +202,8 @@
   @include global.margin-right(32);
 
   @include global.mq(sp) {
-    @include global.sp-font(16, 500, 28, 0);
+    @include global.sp-font(14, 500, 24, 0);
+    @include global.sp-margin-right(12);
   }
 }
 
@@ -202,7 +215,7 @@
 
   @include global.mq(sp) {
     width: 100%;
-    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-font(16, 500, 28, 0);
     @include global.sp-margin-top(16);
   }
 }

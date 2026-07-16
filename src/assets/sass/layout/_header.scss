@@ -32,9 +32,9 @@
   display: flex;
   align-items: center;
   @include global.gap(12);
-
   @include global.mq(sp) {
-    @include global.sp-gap(8);
+    @include global.sp-gap(12);
+    align-items: end;
   }
 }
 
@@ -153,7 +153,9 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 // ナビ項目とサブメニューの隙間を埋める透明ブリッジ（ホバーが途切れて消えるのを防ぐ）

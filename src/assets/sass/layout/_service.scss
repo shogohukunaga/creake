@@ -14,14 +14,16 @@
   color: #fff;
   text-align: center;
   @include global.font(32, 700, 40, 0);
-  @include global.padding(10,40,10,40);
+  @include global.padding(10, 40, 10, 40);
   @include global.bd(8);
   box-shadow: 0 4px 7.5px rgba(0, 0, 0, 0.25);
 
   @include global.mq(sp) {
-    @include global.sp-font(22, 700, 30, 0);
-    @include global.sp-padding-left(24);
-    @include global.sp-padding-right(24);
+    // SPデザイン（67:610）はコンパクトな箱（18px・高さ37）。長文でも左右に余白を残す
+    @include global.sp-font(18, 700, 26, 0);
+    @include global.sp-padding(4, 16, 4, 16);
+    @include global.sp-bd(8);
+    @include global.sp-width(268);
   }
 }
 
@@ -105,7 +107,7 @@
 
   @include global.mq(sp) {
     @include global.sp-height(633);
-    @include global.sp-padding-top(102);
+    @include global.sp-padding-top(32);
     padding-bottom: 0;
   }
 }
@@ -118,8 +120,16 @@
   @include global.width(791);
   height: 100%;
 
+  // SPは左下半分の白い対角三角形（67:914）を全面に敷く
   @include global.mq(sp) {
-    display: none;
+    width: 100%;
+  }
+
+  // 全面背景のpicture（PC/SP出し分けのため例外的にネスト）
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -206,7 +216,7 @@
   @include global.font(16, 700, 22, -0.8);
 
   @include global.mq(sp) {
-    @include global.sp-font(11, 700, 15, 0);
+    @include global.sp-font(11, 700, 15, -1);
   }
 }
 
@@ -250,11 +260,12 @@
   @include global.top(251);
   @include global.right(130);
   writing-mode: vertical-rl;
+  text-orientation: upright; // 英字（SNS）も回転させず正立させる
   color: global.$statblue;
   @include global.font(20, 700, 24, 0);
   @include global.mq(sp) {
     writing-mode: horizontal-tb;
-    @include global.sp-top(576);
+    @include global.sp-top(507);
     left: 0;
     right: 0;
     text-align: center;
@@ -262,16 +273,17 @@
   }
 }
 
+// セクション外（main直下）に置き、ヘッダー(20)より上・ドロワー(40)より下のfloating層で重ねる
 .l-serv-fv__badge {
   position: absolute;
-  z-index: 3;
+  z-index: map-get(global.$layer, floating);
   @include global.top(100);
   @include global.right(104);
   @include global.width(167);
   @include global.height(150);
   border-radius: 50%;
   background: #fff;
-  border: 3px solid global.$statblue;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -292,27 +304,36 @@
 }
 
 .l-serv-fv__badge-ttl {
-  @include global.font(14, 700, 20, 0);
+  @include global.font(16, 500, 20, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(11, 700, 15, 0);
+    @include global.sp-font(11, 500, 15, 0);
   }
 }
 
 .l-serv-fv__badge-num {
-  @include global.font(20, 700, 24, 0);
-  @include global.margin-top(4);
+  @include global.font(28, 700, 28, 0);
   color: global.$statblue;
   @include global.mq(sp) {
-    @include global.sp-font(15, 700, 18, 0);
+    @include global.sp-font(17, 700, 19, 0);
+  }
+}
+
+// 「円」は数字より小さく濃色（Figma: 14px #282136）
+.l-serv-fv__badge-yen {
+  color: global.$tx;
+  @include global.font(14, 700, 28, 0);
+
+  @include global.mq(sp) {
+    @include global.sp-font(10, 700, 19, 0);
   }
 }
 
 .l-serv-fv__badge-zei {
-  @include global.font(11, 500, 14, 0);
+  @include global.font(14, 700, 20, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(10, 500, 12, 0);
+    @include global.sp-font(10, 700, 12, 0);
   }
 }
 
@@ -324,7 +345,7 @@
   }
 }
 
-// 電話モックアップ（スマホ枠 phone-frame.webp ＋スクリーン＋すりガラスパネル）
+// 電話モックアップ（スマホ枠＋スクリーン＋パネル一式を1枚のwebpに書き出し）
 .l-serv-fv__phone {
   position: absolute;
   z-index: 2;
@@ -334,161 +355,13 @@
   @include global.height(453);
   filter: drop-shadow(20px 10px 10px rgba(0, 0, 0, 0.3));
 
-  // スマホ枠（スクリーン部分は透過）を最前面に重ねる
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: url(../img/pc/phone-frame.webp) center / 100% 100% no-repeat;
-    pointer-events: none;
-  }
-
   @include global.mq(sp) {
-    @include global.sp-top(253);
+    @include global.sp-top(183);
     right: auto;
     @include global.sp-left(42);
     @include global.sp-width(155);
-    @include global.sp-height(283);
+    height: auto; // 単一画像なので縦横比(237:453)を維持
     margin-top: 0;
-  }
-}
-
-// ベゼル内側のスクリーン領域
-.l-serv-fv__screen {
-  position: absolute;
-  z-index: 1;
-  @include global.top(9);
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  @include global.width(224);
-  @include global.height(438);
-  @include global.bd(22);
-  overflow: hidden;
-
-  @include global.mq(sp) {
-    @include global.sp-top(6);
-    @include global.sp-width(146);
-    @include global.sp-height(274);
-    @include global.sp-bd(15);
-  }
-}
-
-.l-serv-fv__phone-img {
-  width: 100%;
-  height: 100%;
-}
-
-// 下半分のすりガラスパネル
-.l-serv-fv__phone-panel {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  @include global.height(189);
-  @include global.padding-top(4);
-  @include global.padding-left(13);
-  @include global.padding-right(13);
-  background: rgba(120, 120, 120, 0.5);
-  color: #fff;
-
-  @include global.mq(sp) {
-    @include global.sp-height(118);
-    @include global.sp-padding-top(3);
-    @include global.sp-padding-left(8);
-    @include global.sp-padding-right(8);
-  }
-}
-
-.l-serv-fv__phone-account {
-  display: flex;
-  align-items: center;
-  @include global.gap(8);
-
-  @include global.mq(sp) {
-    @include global.sp-gap(5);
-  }
-}
-
-.l-serv-fv__phone-avatar {
-  flex-shrink: 0;
-  @include global.width(33);
-  @include global.height(33);
-
-  @include global.mq(sp) {
-    @include global.sp-width(21);
-    @include global.sp-height(21);
-  }
-}
-
-.l-serv-fv__phone-follow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @include global.height(14);
-  @include global.padding-left(4);
-  @include global.padding-right(4);
-  @include global.margin-left(10);
-  border: 1px solid #fff;
-  @include global.bd(5);
-  opacity: 0.8;
-  @include global.font(9, 500, 11, 0);
-
-  @include global.mq(sp) {
-    @include global.sp-height(10);
-    @include global.sp-padding-left(2);
-    @include global.sp-padding-right(2);
-    @include global.sp-margin-left(5);
-    @include global.sp-font(7, 500, 8, 0);
-  }
-}
-
-.l-serv-fv__phone-user {
-  @include global.font(11, 700, 16, 0);
-
-  @include global.mq(sp) {
-    @include global.sp-font(8, 700, 11, 0);
-  }
-}
-
-.l-serv-fv__phone-cap {
-  @include global.width(158);
-  @include global.margin-top(8);
-  @include global.font(9, 400, 13, 0);
-
-  @include global.mq(sp) {
-    @include global.sp-width(98);
-    @include global.sp-margin-top(5);
-    @include global.sp-font(6, 400, 9, 0);
-  }
-}
-
-.l-serv-fv__phone-icons {
-  position: absolute;
-  z-index: 2;
-  @include global.right(19);
-  @include global.top(294);
-  display: flex;
-  flex-direction: column;
-  @include global.gap(8);
-
-  @include global.mq(sp) {
-    @include global.sp-right(12);
-    @include global.sp-top(184);
-    @include global.sp-gap(5);
-  }
-}
-
-.l-serv-fv__phone-icons span {
-  @include global.width(19);
-  @include global.height(19);
-
-  @include global.mq(sp) {
-    @include global.sp-width(12);
-    @include global.sp-height(12);
   }
 }
 
@@ -524,7 +397,7 @@
   @include global.padding-bottom(95);
 
   @include global.mq(sp) {
-    @include global.sp-padding-top(40);
+    @include global.sp-padding-top(0);
     @include global.sp-padding-bottom(48);
   }
 }
@@ -584,8 +457,8 @@
   @include global.mq(sp) {
     order: 2;
     @include global.sp-margin-top(-16);
-    @include global.sp-width(80);
-    @include global.sp-height(80);
+    @include global.sp-width(73);
+    @include global.sp-height(77);
   }
 }
 
@@ -595,6 +468,12 @@
 }
 .l-serv-worry__char--2 {
   background-position: 4% 22%;
+
+  // SPデザイン（67:610）は2人目がひと回り大きい
+  @include global.mq(sp) {
+    @include global.sp-width(87);
+    @include global.sp-height(91);
+  }
 }
 
 // 楕円＋しっぽ付きの吹き出し（カンプのベクター形状）
@@ -611,11 +490,15 @@
   @include global.font(24, 700, 34, 0);
 
   @include global.mq(sp) {
-    @include global.sp-width(313);
+    // SP専用の吹き出しベクター（67:908）に差し替え
+    background-image: url(../img/sp/serv-worry-bubble-sp.svg);
+    @include global.sp-width(312);
     @include global.sp-height(130);
+    align-items: baseline;
+    @include global.sp-padding-top(20);
     @include global.sp-padding-left(52);
     @include global.sp-padding-right(38);
-    @include global.sp-font(13, 700, 19, 0);
+    @include global.sp-font(16, 700, 20, 0);
   }
 }
 
@@ -625,9 +508,10 @@
   @include global.padding-right(120);
 
   @include global.mq(sp) {
+    background-image: url(../img/sp/serv-worry-bubble2-sp.svg);
     @include global.sp-height(148);
     @include global.sp-padding-left(53);
-    @include global.sp-padding-right(60);
+    @include global.sp-padding-right(63);
   }
 }
 
@@ -657,6 +541,7 @@
   transform: scaleX(1) scaleY(-1); /* 左右反転のみ */
   @include global.mq(sp) {
     @include global.sp-height(66);
+    @include global.sp-top(-64);
   }
 }
 
@@ -665,6 +550,11 @@
   color: global.$tx;
   @include global.font(32, 700, 40, 0);
   @include global.margin-bottom(24);
+
+  @include global.mq(sp) {
+    @include global.sp-font(20, 700, 38, 0);
+    @include global.sp-margin-bottom(8);
+  }
 }
 
 .l-serv-solve__lead {
@@ -680,7 +570,7 @@
   @include global.gap(34);
 
   @include global.mq(sp) {
-    @include global.sp-width(340);
+    @include global.sp-width(310);
     @include global.sp-gap(28);
   }
 }
@@ -716,11 +606,13 @@
   z-index: 2;
 
   @include global.mq(sp) {
+    // PCの右オフセット（left:56）を打ち消す。背景はPC同様の半透明グレー（67:890）
+    left: 0;
     width: 100%;
     height: auto;
-    @include global.sp-padding-top(16);
-    @include global.sp-padding-bottom(16);
-    @include global.sp-font(17, 700, 26, 0);
+    @include global.sp-padding-top(7);
+    @include global.sp-padding-bottom(7);
+    @include global.sp-font(16, 700, 26, 0);
   }
 }
 
@@ -743,9 +635,9 @@
     height: auto;
     background: #fff;
     @include global.sp-bd(12);
-    @include global.sp-margin-top(-12);
-    @include global.sp-padding(24,20,16,20);
-    @include global.sp-font(14, 500, 24, 0);
+    @include global.sp-margin-top(-8);
+    @include global.sp-padding(24, 24, 16, 24);
+    @include global.sp-font(16, 500, 27, 0);
   }
 }
 
@@ -759,7 +651,7 @@
   @include global.padding-top(32);
   @include global.padding-bottom(60);
   @include global.mq(sp) {
-    @include global.sp-padding(40,20,40,20);
+    @include global.sp-padding(40, 35, 40, 35);
   }
 }
 
@@ -774,6 +666,7 @@
   @include global.height(148);
   @include global.mq(sp) {
     @include global.sp-height(66);
+    @include global.sp-top(-66);
   }
 }
 
@@ -785,8 +678,9 @@
   @include global.margin-top(32);
 
   @include global.mq(sp) {
-    @include global.sp-font(15, 400, 26, 0);
+    @include global.sp-font(16, 400, 26, 0);
     @include global.sp-margin-top(24);
+    @include global.sp-padding(0, 45, 0, 45);
   }
 }
 
@@ -831,8 +725,8 @@
   flex-shrink: 0;
 
   @include global.mq(sp) {
-    @include global.sp-width(120);
-    @include global.sp-height(120);
+    @include global.sp-width(177);
+    @include global.sp-height(177);
   }
 }
 
@@ -895,7 +789,7 @@
   @include global.padding-bottom(80);
 
   @include global.mq(sp) {
-    @include global.sp-padding(40,20,48,20);
+    @include global.sp-padding(40, 20, 48, 20);
   }
 }
 
@@ -920,16 +814,24 @@
   display: flex;
   flex-direction: column;
   @include global.gap(16);
-  @include global.padding(50,50,50,50);
+  @include global.padding(50, 50, 50, 50);
   color: global.$tx;
   @include global.font(24, 500, 34, 0);
-
   @include global.mq(sp) {
-    width: 100%;
+    @include global.sp-width(247);
     @include global.sp-gap(12);
-    @include global.sp-padding(28,24,28,24);
+    @include global.sp-padding(28, 24, 28, 24);
     @include global.sp-font(15, 500, 24, 0);
   }
+}
+
+.l-serv-what__box p {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+.l-serv-what__box p::before {
+  content: "・";
 }
 
 .l-serv-what__price {
@@ -939,7 +841,7 @@
   @include global.margin-top(50);
   background: #fff;
   border: 3px solid global.$tx;
-  @include global.bd(8);
+  border-radius: 8px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.45);
   text-align: center;
   @include global.padding-top(20);
@@ -997,7 +899,7 @@
   @include global.padding-bottom(60);
 
   @include global.mq(sp) {
-    @include global.sp-padding(40,20,40,20);
+    @include global.sp-padding(40, 20, 40, 20);
   }
 }
 
@@ -1034,9 +936,9 @@
   z-index: 1;
   display: flex;
   @include global.gap(51);
-
   @include global.mq(sp) {
     @include global.sp-gap(16);
+    flex-direction: column;
   }
 }
 
@@ -1049,9 +951,7 @@
   height: 80%;
   border-left: 1px solid global.$tx;
   @include global.mq(sp) {
-    @include global.sp-left(22);
-    @include global.sp-top(28);
-    height: calc(100% + min(28 / 3.75 * 1vw));
+    display: none;
   }
 }
 
@@ -1059,7 +959,6 @@
   flex-shrink: 0;
   color: global.$orange;
   @include global.font(18, 500, 30, 0);
-
   @include global.mq(sp) {
     @include global.sp-font(14, 500, 24, 0);
   }
@@ -1092,7 +991,7 @@
   @include global.padding-bottom(60);
 
   @include global.mq(sp) {
-    @include global.sp-padding(40,20,40,20);
+    @include global.sp-padding(40, 20, 40, 20);
   }
 }
 
@@ -1119,17 +1018,17 @@
   display: flex;
   align-items: center;
   @include global.gap(47);
-  background: #fff;
-  @include global.bd(8);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   @include global.padding-left(41);
   @include global.padding-right(41);
 
   @include global.mq(sp) {
+    // SPデザイン（67:610）はアイコン上・テキスト下の縦積みカード
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: auto;
-    @include global.sp-gap(20);
-    @include global.sp-padding(20,20,20,20);
+    @include global.sp-gap(8);
+    @include global.sp-padding(20, 20, 24, 20);
   }
 }
 
@@ -1150,7 +1049,8 @@
   @include global.font(18, 500, 30, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(14, 500, 22, 0);
+    text-align: center;
+    @include global.sp-font(16, 500, 24, 0);
   }
 }
 
@@ -1175,7 +1075,7 @@
   @include global.padding-bottom(80);
 
   @include global.mq(sp) {
-    @include global.sp-padding(40,20,48,20);
+    @include global.sp-padding(40, 20, 48, 20);
   }
 }
 
@@ -1200,9 +1100,19 @@
   span {
     color: global.$orange;
   }
+  // SPではスタンダードプラン直前（--sp）に表示する
   @include global.mq(sp) {
+    display: none;
+  }
+}
+
+.l-serv-price__most--sp {
+  display: none;
+
+  @include global.mq(sp) {
+    display: block;
+    margin-top: 0;
     @include global.sp-font(18, 600, 26, 0);
-    @include global.sp-margin-top(16);
   }
 }
 
@@ -1347,17 +1257,22 @@
 .l-serv-price__term--none {
   background-color: #e6f6fb;
   color: #e6f6fb;
+
+  // SPデザインではトライアルに契約期間行がない（高さ揃え用のダミーはPCのみ）
+  @include global.mq(sp) {
+    display: none;
+  }
 }
 
 .l-serv-price__detail {
   background: #fff;
   @include global.bd(8);
-  @include global.padding(24,14,24,14);
+  @include global.padding(24, 14, 24, 14);
   color: global.$tx;
   @include global.font(18, 700, 30, 0);
 
   @include global.mq(sp) {
-    @include global.sp-padding(20,20,20,20);
+    @include global.sp-padding(20, 20, 20, 20);
     @include global.sp-font(15, 700, 26, 0);
   }
 }
@@ -1371,7 +1286,7 @@
   @include global.padding-bottom(60);
 
   @include global.mq(sp) {
-    @include global.sp-padding(40,20,40,20);
+    @include global.sp-padding(40, 20, 40, 20);
   }
 }
 
@@ -1406,12 +1321,12 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  @include global.padding(22,31,22,31);
+  @include global.padding(22, 31, 22, 31);
   color: global.$tx;
   @include global.font(18, 500, 28, 0);
 
   @include global.mq(sp) {
-    @include global.sp-padding(16,16,16,16);
+    @include global.sp-padding(16, 16, 16, 16);
     @include global.sp-font(14, 500, 22, 0);
   }
 }

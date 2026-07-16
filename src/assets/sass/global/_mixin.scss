@@ -11,12 +11,21 @@
 $breakpoint-scales: (
   pc: 14.4,
   tab: 7.68,
-  sp: 3.75,
+  sp: 3.9,
 );
 
 // グローバルなフォントミックスイン
 @mixin font($size, $weight, $height, $spacing) {
   font-size: max(12px, #{$size / map-get($breakpoint-scales, pc) * 1vw});
+  font-weight: $weight;
+  line-height: calc($height / $size);
+  letter-spacing: calc($spacing / $size * 1em);
+}
+
+// 12px下限なしのフォント（スマホモックアップ内の極小UIテキスト専用。
+// font() の max(12px, …) だと Figma の 9〜11px 指定が拡大されて枠から溢れるため）
+@mixin font-vw($size, $weight, $height, $spacing) {
+  font-size: min($size / map-get($breakpoint-scales, pc) * 1vw);
   font-weight: $weight;
   line-height: calc($height / $size);
   letter-spacing: calc($spacing / $size * 1em);

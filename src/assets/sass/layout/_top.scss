@@ -19,6 +19,14 @@
     transform: translateY(0);
   }
 }
+@keyframes fvLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 
 /* =========================================================
    オープニングアニメーション（ランディング時）
@@ -130,20 +138,35 @@
   align-items: center;
   justify-content: center;
   @include global.gap(10);
-
   @include global.mq(sp) {
     width: 100%;
+    &::after {
+      background: url(../img/sp/fv-bg.webp) no-repeat center center/cover;
+      position: absolute;
+      width: 100%;
+      @include global.sp-height(571);
+      @include global.sp-top(0);
+      @include global.sp-left(0);
+      content: "";
+      z-index: -1;
+    }
   }
 }
 
 .l-fv__yago-row {
   @include global.width(837);
   @include global.height(75);
+  @include global.mq(sp) {
+    display: none;
+  }
 }
 
 .l-fv__yago-row--sm {
   @include global.width(446);
   @include global.height(93);
+  @include global.mq(sp) {
+    display: none;
+  }
 }
 
 // 右520px：2列の画像スクロール
@@ -201,32 +224,48 @@
   }
   @include global.mq(sp) {
     @include global.sp-left(20);
-    @include global.sp-top(120);
+    @include global.sp-top(130);
     @include global.sp-width(350);
-    @include global.sp-font(21, 700, 36, -1);
+    @include global.sp-font(24, 700, 36, -1);
+    span {
+      @include global.sp-font(24, 700, 36, -1);
+    }
   }
 }
 
-// SP用：3枚横並び画像（SPデザイン 1:284 準拠）
+// SP用：6枚の写真が8px間隔で右から左へ無限スクロール（修正版デザイン 40:919 指示）
 .l-fv__sprow {
   display: none;
 
   @include global.mq(sp) {
-    display: flex;
-    justify-content: center;
-    @include global.sp-gap(8);
+    display: block;
     position: absolute;
     z-index: 1;
     left: 0;
     width: 100%;
     @include global.sp-bottom(40);
+    overflow: hidden;
+  }
+}
+
+// 2セット並べて translateX(-50%) でシームレスにループ
+.l-fv__sprow-track {
+  @include global.mq(sp) {
+    display: flex;
+    width: max-content;
+    animation: fvLeft 30s linear infinite;
   }
 }
 
 .l-fv__sprow-img {
   @include global.mq(sp) {
+    flex-shrink: 0;
     @include global.sp-width(122);
-    @include global.sp-height(220);
+    @include global.sp-height(200);
+    @include global.sp-margin-right(8);
+    img {
+      border-radius: 12px;
+    }
   }
 }
 
@@ -293,12 +332,17 @@
   @include global.font(18, 700, 22, 2);
 }
 
-// SP用CTAバー（FV直下・PCは非表示。SPデザイン 1:284 準拠）
+// SP用CTAバー（画面最下部に常時固定・PCは非表示。修正版デザイン 40:919 指示）
 .l-cta {
   display: none;
 
   @include global.mq(sp) {
     display: flex;
+    position: fixed;
+    z-index: map-get(global.$layer, floating);
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 }
 
@@ -308,9 +352,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include global.sp-gap(10);
     @include global.sp-height(60);
     color: #fff;
-    @include global.sp-font(16, 700, 16, 0);
+    @include global.sp-font(16, 700, 20, 0);
+  }
+}
+
+.l-cta__icon {
+  @include global.mq(sp) {
+    display: block;
+    flex-shrink: 0;
+  }
+}
+
+.l-cta__icon--book {
+  @include global.mq(sp) {
+    @include global.sp-width(35);
+    @include global.sp-height(29);
+  }
+}
+
+.l-cta__icon--mail {
+  @include global.mq(sp) {
+    @include global.sp-width(35);
+    @include global.sp-height(35);
   }
 }
 
@@ -346,7 +412,7 @@
   @include global.font(20, 500, 32, 0);
   @include global.margin-top(30);
   @include global.mq(sp) {
-    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-font(16, 700, 26, 0);
     @include global.sp-margin-top(20);
   }
 }
@@ -399,7 +465,7 @@
   @include global.mq(sp) {
     @include global.sp-width(350);
     height: auto;
-    @include global.sp-padding-bottom(28);
+    @include global.sp-padding-bottom(62);
   }
 }
 
@@ -416,7 +482,8 @@
     @include global.sp-left(34);
     @include global.sp-top(27);
     @include global.sp-width(282);
-    height: calc(100% - min(55 / 3.75 * 1vw));
+    // Figma: 水色ボックスはカード上27・下32の余白（27+32=59）
+    height: calc(100% - min(59 / 3.75 * 1vw));
   }
 }
 
@@ -444,9 +511,11 @@
   @include global.font(24, 500, 30, 0);
 
   @include global.mq(sp) {
-    @include global.sp-top(8);
-    @include global.sp-left(8);
-    @include global.sp-font(14, 500, 18, 0);
+    @include global.sp-top(11);
+    left: 0;
+    @include global.sp-width(63);
+    text-align: center;
+    @include global.sp-font(16, 700, 25, 0);
   }
 }
 
@@ -460,9 +529,11 @@
   @include global.font(64, 500, 70, 0);
 
   @include global.mq(sp) {
-    @include global.sp-top(26);
-    @include global.sp-left(18);
-    @include global.sp-font(28, 500, 30, 0);
+    @include global.sp-top(29);
+    left: 0;
+    @include global.sp-width(63);
+    text-align: center;
+    @include global.sp-font(18, 700, 27, 0);
   }
 }
 
@@ -474,9 +545,10 @@
   @include global.padding-right(74);
 
   @include global.mq(sp) {
-    @include global.sp-padding-top(96);
-    @include global.sp-padding-left(24);
-    @include global.sp-padding-right(24);
+    // Figma: 本文はx53〜300（水色ボックス34〜316の内側）
+    @include global.sp-padding-top(66);
+    @include global.sp-padding-left(53);
+    @include global.sp-padding-right(50);
   }
 }
 
@@ -485,7 +557,10 @@
   @include global.font(20, 700, 28, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(18, 700, 26, 0);
+    width: fit-content;
+    margin: 0 auto;
+    @include global.sp-font(18, 700, 28, 0);
+    @include global.sp-padding(0, 10, 0, 10);
   }
 }
 
@@ -495,8 +570,8 @@
   @include global.margin-top(24);
 
   @include global.mq(sp) {
-    @include global.sp-font(15, 500, 26, 0);
-    @include global.sp-margin-top(16);
+    @include global.sp-font(16, 700, 26, 0);
+    @include global.sp-margin-top(14);
   }
 }
 
@@ -522,7 +597,7 @@
   @include global.margin-top(16);
 
   @include global.mq(sp) {
-    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-font(16, 700, 26, 0);
     @include global.sp-margin-top(16);
     @include global.sp-padding-left(60);
     @include global.sp-padding-right(60);
@@ -564,22 +639,17 @@
   @include global.height(267);
   @include global.bd(22);
   overflow: hidden;
-
-  // スマホ枠（スクリーン部分は透過）を写真の上に重ねる
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: url(../img/pc/phone-frame.webp) center / 100% 100% no-repeat;
-    pointer-events: none;
-  }
-
+  background: #fff;
   @include global.mq(sp) {
     @include global.sp-width(146);
     @include global.sp-height(270);
     @include global.sp-bd(22);
   }
+}
+
+// 投稿画像は縮小して全体を表示（cover だと枠内で上下が切れ文字が欠けるため）
+.l-works__img img {
+  object-fit: contain;
 }
 
 .l-works__badge {
@@ -607,7 +677,6 @@
 .l-works__badge-tx {
   color: global.$tx;
   @include global.font(14, 700, 22, 0);
-
   @include global.mq(sp) {
     @include global.sp-font(13, 700, 20, 0);
   }
@@ -633,7 +702,7 @@
 /* =========================================================
    私たちについて
 ========================================================= */
-.l-about {
+.l-abouttop {
   background: global.$gray;
   @include global.padding-top(32);
   @include global.padding-bottom(32);
@@ -643,7 +712,7 @@
   }
 }
 
-.l-about__inner {
+.l-abouttop__inner {
   @include global.width(1200);
   margin-left: auto;
   margin-right: auto;
@@ -653,27 +722,29 @@
   }
 }
 
-.l-about__ttl {
+.l-abouttop__ttl {
   color: global.$tx;
   @include global.font(30, 700, 40, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(22, 700, 32, 0);
+    @include global.sp-font(24, 700, 32, 0);
+    @include global.sp-padding(0, 25, 0, 25);
   }
 }
 
-.l-about__tx {
+.l-abouttop__tx {
   color: global.$tx;
   @include global.font(18, 500, 34, 0);
   @include global.margin-top(24);
 
   @include global.mq(sp) {
-    @include global.sp-font(15, 500, 26, 0);
+    @include global.sp-font(16, 500, 26, 0);
     @include global.sp-margin-top(20);
+    @include global.sp-padding(0, 25, 0, 25);
   }
 }
 
-.l-about__btn {
+.l-abouttop__btn {
   @include global.margin-top(40);
   margin-left: auto;
   margin-right: 0;
@@ -739,6 +810,7 @@
     flex-wrap: wrap;
     @include global.sp-gap(12);
     @include global.sp-padding(12, 16, 12, 16);
+    border-radius: 8px;
   }
 }
 
@@ -789,6 +861,9 @@
 
 .p-news__btn {
   @include global.margin-top(32);
+  @include global.mq(sp) {
+    @include global.sp-margin-top(32);
+  }
 }
 
 /* =========================================================
@@ -798,7 +873,6 @@
   background: global.$gray;
   @include global.padding-top(32);
   @include global.padding-bottom(32);
-
   @include global.mq(sp) {
     @include global.sp-padding-top(40);
     @include global.sp-padding-bottom(40);
@@ -816,7 +890,7 @@
   @include global.margin-top(40);
 
   @include global.mq(sp) {
-    @include global.sp-width(350);
+    @include global.sp-width(292);
     flex-direction: column;
     @include global.sp-gap(28);
     @include global.sp-margin-top(32);
@@ -888,9 +962,8 @@
   height: 1px;
   background: global.$tx;
   @include global.margin-top(37);
-
   @include global.mq(sp) {
-    @include global.sp-margin-top(28);
+    @include global.sp-margin-top(16);
   }
 }
 
@@ -938,7 +1011,7 @@
   @include global.font(12, 700, 14, 0);
 
   @include global.mq(sp) {
-    @include global.sp-font(12, 700, 14, 0);
+    display: none;
   }
 }
 
