@@ -1362,3 +1362,85 @@
 .l-serv-faq__item.is-open .l-serv-faq__a {
   display: block;
 }
+
+/* =========================================================
+   サービスページ専用：SPヘッダー（Figma 67:959）
+   白半透明バー＋テキストロゴ（CREAKE＋タグライン）＋黒ハンバーガー。
+   PC・他ページには影響させないため mq(sp) 内・--serv 限定で上書きする。
+========================================================= */
+// タグラインはPC（および他ページのマークアップ）では非表示
+.l-header__logo-sub {
+  display: none;
+}
+
+.l-header--serv {
+  @include global.mq(sp) {
+    @include global.sp-height(70);
+    background: rgba(255, 253, 253, 0.7);
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    @include global.sp-padding-left(24);
+  }
+}
+
+// ロゴはマーク非表示・テキスト縦積み（ブランド＋タグライン）
+.l-header--serv .l-header__logo {
+  @include global.mq(sp) {
+    align-items: center;
+  }
+}
+
+.l-header--serv .l-header__logo-mark {
+  @include global.mq(sp) {
+    display: none;
+  }
+}
+
+.l-header--serv .l-header__logo-txbox {
+  @include global.mq(sp) {
+    display: flex;
+    flex-direction: column;
+    @include global.sp-gap(2);
+  }
+}
+
+// ブランド「CREAKE」＝#285793 / Train One 18px
+.l-header--serv .l-header__logo-tx {
+  @include global.mq(sp) {
+    color: global.$statblue;
+    font-family: "Train One", global.$ff-en;
+    @include global.sp-font(18, 400, 20, 0);
+  }
+}
+
+// タグライン＝#180E3D / Noto Sans JP 10px
+.l-header--serv .l-header__logo-sub {
+  @include global.mq(sp) {
+    display: block;
+    color: #180e3d;
+    font-family: global.$ff-base;
+    @include global.sp-font(10, 500, 10, 0);
+  }
+}
+
+// ハンバーガーの3本線を黒に（白ヘッダー上で視認できるように）
+.l-header--serv .p-drawer__icon--bar1,
+.l-header--serv .p-drawer__icon--bar2,
+.l-header--serv .p-drawer__icon--bar3 {
+  @include global.mq(sp) {
+    background: #000;
+  }
+}
+
+// ヘッダー高70pxに合わせ、ドロワー・オーバーレイの開始位置も70pxへ
+.l-drawer--serv {
+  @include global.mq(sp) {
+    @include global.sp-top(70);
+    height: calc(100% - min(70 / 3.9 * 1vw));
+  }
+}
+
+.p-drawer__background--serv {
+  @include global.mq(sp) {
+    @include global.sp-top(70);
+  }
+}

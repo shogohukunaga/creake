@@ -136,9 +136,15 @@
 }
 
 // Instagram制作代行のサブ項目（インデント＋やや小さめ）
+// serviceページのドロワー（.l-drawer--serv）でのみ表示する（他ページは非表示）
 .l-drawer__nav-item--sub {
+  display: none;
   @include global.sp-padding-left(16);
   @include global.sp-font(16, 500, 16, 0);
+}
+
+.l-drawer--serv .l-drawer__nav-item--sub {
+  display: block;
 }
 
 // CTAバー（フル幅・横並び・アイコン付き。l-cta と同一デザイン）
