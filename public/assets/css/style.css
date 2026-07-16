@@ -3026,6 +3026,7 @@ body {
 }
 
 .l-bloglist__bc {
+	margin-left: 8.3333333333vw;
 	margin-top: 2.2222222222vw;
 }
 
@@ -3070,8 +3071,6 @@ body {
 
 .l-bloglist__side.is-open .l-bloglist__cat-list {
 	display: block;
-	margin: 0 auto;
-	width: 46.1538461538vw;
 }
 
 .l-bloglist__cat-item {
@@ -5666,6 +5665,11 @@ body {
 	font-weight: 700;
 	letter-spacing: 0em;
 	line-height: 1.5;
+	margin: 0 auto;
+	width: 46.1538461538vw;
+}
+
+.l-bloglist__side.is-open .l-bloglist__cat-list {
 	margin: 0 auto;
 	width: 46.1538461538vw;
 }

@@ -37,7 +37,7 @@
 
 .l-bloglist__bc {
   @include global.margin-top(32);
-
+  @include global.margin-left(120);
   @include global.mq(sp) {
     @include global.sp-margin-top(24);
     @include global.sp-margin-left(20);
@@ -99,8 +99,10 @@
 
 .l-bloglist__side.is-open .l-bloglist__cat-list {
   display: block;
-  @include global.sp-width(180);
-  margin: 0 auto;
+  @include global.mq("sp") {
+    @include global.sp-width(180);
+    margin: 0 auto;
+  }
 }
 
 .l-bloglist__cat-item {
