@@ -48,29 +48,19 @@
   flex-shrink: 0;
 }
 .l-serv-ic--why01 {
-  background-image: url(../img/pc/serv-ic-why01.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-why01.webp) no-repeat center center/cover;
 }
 .l-serv-ic--why02 {
-  background-image: url(../img/pc/serv-ic-why02.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-why02.webp) no-repeat center center/cover;
 }
 .l-serv-ic--why03 {
-  background-image: url(../img/pc/serv-ic-why03.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-why03.webp) no-repeat center center/cover;
 }
 .l-serv-ic--why04 {
-  background-image: url(../img/pc/serv-ic-why04.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-why04.webp) no-repeat center center/cover;
 }
 .l-serv-ic--reco1 {
-  background-image: url(../img/pc/serv-ic-reco1.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-reco1.webp) no-repeat center center/cover;
   @include global.width(124);
   @include global.height(120);
 
@@ -80,9 +70,7 @@
   }
 }
 .l-serv-ic--reco2 {
-  background-image: url(../img/pc/serv-ic-reco2.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-reco2.webp) no-repeat center center/cover;
   @include global.width(124);
   @include global.height(120);
 
@@ -93,9 +81,7 @@
 }
 // 複合アイコン（人物+¥袋 / ビル+パズル）は合成済みwebpを使用
 .l-serv-ic--reco3 {
-  background-image: url(../img/pc/serv-ic-reco3.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-reco3.webp) no-repeat center center/cover;
   @include global.width(124);
   @include global.height(110);
 
@@ -105,9 +91,7 @@
   }
 }
 .l-serv-ic--reco4 {
-  background-image: url(../img/pc/serv-ic-reco4.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-reco4.webp) no-repeat center center/cover;
   @include global.width(124);
   @include global.height(104);
 
@@ -117,9 +101,7 @@
   }
 }
 .l-serv-ic--reco5 {
-  background-image: url(../img/pc/serv-ic-reco5.webp);
-  background-size: cover;
-  background-position: center;
+  background: url(../img/pc/serv-ic-reco5.webp) no-repeat center center/cover;
   @include global.width(124);
   @include global.height(120);
 
