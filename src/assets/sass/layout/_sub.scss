@@ -131,6 +131,7 @@
 // about：パンくずが元からヒーロー内（PC/SP）にあるため、PCは現状のまま・SPのみ白＋サイズ調整
 .l-breadcrumb--hero-sp {
   @include global.mq(sp) {
+    z-index: 2;
     color: #fff;
     @include global.sp-font(14, 700, 18, 0);
     @include global.sp-margin-bottom(24);

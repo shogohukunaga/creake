@@ -4748,6 +4748,7 @@ body {
 	letter-spacing: 0em;
 	line-height: 1.2857142857;
 	margin-bottom: 6.1538461538vw;
+	z-index: 2;
 }
 
 .l-breadcrumb--body {
