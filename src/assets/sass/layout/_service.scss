@@ -48,50 +48,50 @@
   flex-shrink: 0;
 }
 .l-serv-ic--why01 {
-  background-image: url(../img/pc/serv-icons1.webp);
-  background-size: 814.32% 720.88%;
-  background-position: 59.23% 48.61%;
+  background-image: url(../img/pc/serv-ic-why01.webp);
+  background-size: cover;
+  background-position: center;
 }
 .l-serv-ic--why02 {
-  background-image: url(../img/pc/serv-icons1.webp);
-  background-size: 820.84% 752.28%;
-  background-position: 33.33% 101.69%;
+  background-image: url(../img/pc/serv-ic-why02.webp);
+  background-size: cover;
+  background-position: center;
 }
 .l-serv-ic--why03 {
-  background-image: url(../img/pc/serv-icons1.webp);
-  background-size: 937.3% 829.75%;
-  background-position: 58.84% 33.08%;
+  background-image: url(../img/pc/serv-ic-why03.webp);
+  background-size: cover;
+  background-position: center;
 }
 .l-serv-ic--why04 {
-  background-image: url(../img/pc/serv-icons1.webp);
-  background-size: 862.32% 763.37%;
-  background-position: 43.44% 49.98%;
+  background-image: url(../img/pc/serv-ic-why04.webp);
+  background-size: cover;
+  background-position: center;
 }
 .l-serv-ic--reco1 {
-  background-image: url(../img/pc/serv-icons2.webp);
-  background-size: 414.26% 179.41%;
-  background-position: 65.9% 60.55%;
+  background-image: url(../img/pc/serv-ic-reco1.webp);
+  background-size: cover;
+  background-position: center;
 }
 .l-serv-ic--reco2 {
-  background-image: url(../img/pc/serv-icons2.webp);
-  background-size: 414.19% 179.44%;
-  background-position: 4.84% 58.78%;
+  background-image: url(../img/pc/serv-ic-reco2.webp);
+  background-size: cover;
+  background-position: center;
 }
 // 複合アイコン（人物+¥袋 / ビル+パズル）は合成済みwebpを使用
 .l-serv-ic--reco3 {
   background-image: url(../img/pc/serv-ic-reco3.webp);
-  background-size: contain;
+  background-size: cover;
   background-position: center;
 }
 .l-serv-ic--reco4 {
   background-image: url(../img/pc/serv-ic-reco4.webp);
-  background-size: contain;
+  background-size: cover;
   background-position: center;
 }
 .l-serv-ic--reco5 {
-  background-image: url(../img/pc/serv-icons3.webp);
-  background-size: 665.88% 608.01%;
-  background-position: 26.93% 30.93%;
+  background-image: url(../img/pc/serv-ic-reco5.webp);
+  background-size: cover;
+  background-position: center;
 }
 
 /* =========================================================
@@ -106,7 +106,7 @@
   overflow: hidden;
 
   @include global.mq(sp) {
-    @include global.sp-height(563);
+    @include global.sp-height(573);
     @include global.sp-padding-top(32);
     padding-bottom: 0;
   }
