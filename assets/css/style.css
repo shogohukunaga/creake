@@ -4910,7 +4910,7 @@ body {
 }
 
 .l-serv-fv {
-	height: 162.3076923077vw;
+	height: 144.358974359vw;
 	padding-bottom: 0;
 	padding-top: 8.2051282051vw;
 }
@@ -4989,11 +4989,11 @@ body {
 }
 
 .l-serv-fv__vtext {
-	font-size: min(28px, 3.5897435897vw);
+	font-size: min(36px, 4.6153846154vw);
 	font-weight: 700;
 	left: 0;
 	letter-spacing: 0em;
-	line-height: 1.2142857143;
+	line-height: 1.1111111111;
 	right: 0;
 	text-align: center;
 	top: 130vw;
@@ -5060,6 +5060,10 @@ body {
 .l-serv-worry {
 	padding-bottom: 12.3076923077vw;
 	padding-top: 0vw;
+}
+
+.p-serv-solve__ttl {
+	width: 80.2564102564vw;
 }
 
 .l-serv-worry__list {
