@@ -679,11 +679,16 @@ body {
 }
 
 .l-drawer__nav-item--sub {
+	display: none;
 	font-size: min(32px, 4.1025641026vw);
 	font-weight: 500;
 	letter-spacing: 0em;
 	line-height: 1;
 	padding-left: 4.1025641026vw;
+}
+
+.l-drawer--serv .l-drawer__nav-item--sub {
+	display: block;
 }
 
 .l-drawer__cta {
@@ -2859,6 +2864,16 @@ body {
 
 .l-serv-faq__item.is-open .l-serv-faq__a {
 	display: block;
+}
+
+/* =========================================================
+   サービスページ専用：SPヘッダー（Figma 67:959）
+   白半透明バー＋テキストロゴ（CREAKE＋タグライン）＋黒ハンバーガー。
+   PC・他ページには影響させないため mq(sp) 内・--serv 限定で上書きする。
+========================================================= */
+
+.l-header__logo-sub {
+	display: none;
 }
 
 .l-works-page {
@@ -5530,6 +5545,61 @@ body {
 	padding-bottom: 4.1025641026vw;
 	padding-left: 4.1025641026vw;
 	padding-right: 4.1025641026vw;
+}
+
+.l-header--serv {
+	background: rgba(255, 253, 253, 0.7);
+	box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+	height: 17.9487179487vw;
+	padding-left: 6.1538461538vw;
+}
+
+.l-header--serv .l-header__logo {
+	align-items: center;
+}
+
+.l-header--serv .l-header__logo-mark {
+	display: none;
+}
+
+.l-header--serv .l-header__logo-txbox {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5128205128vw;
+}
+
+.l-header--serv .l-header__logo-tx {
+	color: #285793;
+	font-family: "Train One", "Overpass", "Yu Gothic", YuGothic, sans-serif;
+	font-size: min(36px, 4.6153846154vw);
+	font-weight: 400;
+	letter-spacing: 0em;
+	line-height: 1.1111111111;
+}
+
+.l-header--serv .l-header__logo-sub {
+	color: #180e3d;
+	display: block;
+	font-family: "Yu Gothic", YuGothic, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+	font-size: min(20px, 2.5641025641vw);
+	font-weight: 500;
+	letter-spacing: 0em;
+	line-height: 1;
+}
+
+.l-header--serv .p-drawer__icon--bar1,
+.l-header--serv .p-drawer__icon--bar2,
+.l-header--serv .p-drawer__icon--bar3 {
+	background: #000;
+}
+
+.l-drawer--serv {
+	height: calc(100% - 17.9487179487vw);
+	top: 17.9487179487vw;
+}
+
+.p-drawer__background--serv {
+	top: 17.9487179487vw;
 }
 
 .l-works-page {
