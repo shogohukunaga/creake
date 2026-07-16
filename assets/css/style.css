@@ -1897,30 +1897,40 @@ body {
 	background-image: url(../img/pc/serv-ic-reco1.webp);
 	background-position: center;
 	background-size: cover;
+	height: 8.3333333333vw;
+	width: 8.6111111111vw;
 }
 
 .l-serv-ic--reco2 {
 	background-image: url(../img/pc/serv-ic-reco2.webp);
 	background-position: center;
 	background-size: cover;
+	height: 8.3333333333vw;
+	width: 8.6111111111vw;
 }
 
 .l-serv-ic--reco3 {
 	background-image: url(../img/pc/serv-ic-reco3.webp);
 	background-position: center;
 	background-size: cover;
+	height: 7.6388888889vw;
+	width: 8.6111111111vw;
 }
 
 .l-serv-ic--reco4 {
 	background-image: url(../img/pc/serv-ic-reco4.webp);
 	background-position: center;
 	background-size: cover;
+	height: 7.2222222222vw;
+	width: 8.6111111111vw;
 }
 
 .l-serv-ic--reco5 {
 	background-image: url(../img/pc/serv-ic-reco5.webp);
 	background-position: center;
 	background-size: cover;
+	height: 8.3333333333vw;
+	width: 8.6111111111vw;
 }
 
 /* =========================================================
@@ -2605,8 +2615,6 @@ body {
 .l-serv-reco__ic {
 	border-radius: 0;
 	flex-shrink: 0;
-	height: 8.3333333333vw;
-	width: 8.6111111111vw;
 }
 
 .l-serv-reco__tx {
@@ -4909,6 +4917,31 @@ body {
 	padding-right: 5.1282051282vw;
 }
 
+.l-serv-ic--reco1 {
+	height: 20vw;
+	width: 20.5128205128vw;
+}
+
+.l-serv-ic--reco2 {
+	height: 20vw;
+	width: 20.5128205128vw;
+}
+
+.l-serv-ic--reco3 {
+	height: 18.2051282051vw;
+	width: 20.5128205128vw;
+}
+
+.l-serv-ic--reco4 {
+	height: 17.1794871795vw;
+	width: 20.5128205128vw;
+}
+
+.l-serv-ic--reco5 {
+	height: 20vw;
+	width: 20.5128205128vw;
+}
+
 .l-serv-fv {
 	height: 146.9230769231vw;
 	padding-bottom: 0;
@@ -5386,11 +5419,6 @@ body {
 	padding-right: 5.1282051282vw;
 	padding-top: 5.1282051282vw;
 	width: 100%;
-}
-
-.l-serv-reco__ic {
-	height: 20vw;
-	width: 20.5128205128vw;
 }
 
 .l-serv-reco__tx {
