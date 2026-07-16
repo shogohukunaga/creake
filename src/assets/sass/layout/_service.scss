@@ -106,7 +106,7 @@
   overflow: hidden;
 
   @include global.mq(sp) {
-    @include global.sp-height(633);
+    @include global.sp-height(563);
     @include global.sp-padding-top(32);
     padding-bottom: 0;
   }
@@ -269,7 +269,7 @@
     left: 0;
     right: 0;
     text-align: center;
-    @include global.sp-font(14, 700, 17, 0);
+    @include global.sp-font(18, 700, 20, 0);
   }
 }
 
@@ -399,6 +399,12 @@
   @include global.mq(sp) {
     @include global.sp-padding-top(0);
     @include global.sp-padding-bottom(48);
+  }
+}
+
+.p-serv-solve__ttl {
+  @include global.mq(sp) {
+    @include global.sp-width(313);
   }
 }
 
