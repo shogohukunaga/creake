@@ -71,27 +71,62 @@
   background-image: url(../img/pc/serv-ic-reco1.webp);
   background-size: cover;
   background-position: center;
+  @include global.width(124);
+  @include global.height(120);
+
+  @include global.mq(sp) {
+    @include global.sp-width(80);
+    @include global.sp-height(78);
+  }
 }
 .l-serv-ic--reco2 {
   background-image: url(../img/pc/serv-ic-reco2.webp);
   background-size: cover;
   background-position: center;
+  @include global.width(124);
+  @include global.height(120);
+
+  @include global.mq(sp) {
+    @include global.sp-width(80);
+    @include global.sp-height(78);
+  }
 }
 // 複合アイコン（人物+¥袋 / ビル+パズル）は合成済みwebpを使用
 .l-serv-ic--reco3 {
   background-image: url(../img/pc/serv-ic-reco3.webp);
   background-size: cover;
   background-position: center;
+  @include global.width(124);
+  @include global.height(110);
+
+  @include global.mq(sp) {
+    @include global.sp-width(80);
+    @include global.sp-height(71);
+  }
 }
 .l-serv-ic--reco4 {
   background-image: url(../img/pc/serv-ic-reco4.webp);
   background-size: cover;
   background-position: center;
+  @include global.width(124);
+  @include global.height(104);
+
+  @include global.mq(sp) {
+    @include global.sp-width(80);
+    @include global.sp-height(67);
+  }
 }
 .l-serv-ic--reco5 {
   background-image: url(../img/pc/serv-ic-reco5.webp);
   background-size: cover;
   background-position: center;
+  @include global.width(124);
+  @include global.height(120);
+
+  @include global.mq(sp) {
+    @include global.sp-width(80);
+    @include global.sp-height(78);
+  }
 }
 
 /* =========================================================
@@ -1039,15 +1074,9 @@
 }
 
 .l-serv-reco__ic {
-  @include global.width(124);
-  @include global.height(120);
   flex-shrink: 0;
   border-radius: 0;
-
-  @include global.mq(sp) {
-    @include global.sp-width(80);
-    @include global.sp-height(78);
-  }
+  // サイズは各 .l-serv-ic--recoN で個別指定
 }
 
 .l-serv-reco__tx {
