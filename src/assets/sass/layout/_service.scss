@@ -86,8 +86,8 @@
   @include global.height(110);
 
   @include global.mq(sp) {
-    @include global.sp-width(80);
-    @include global.sp-height(71);
+    @include global.sp-width(120);
+    @include global.sp-height(81);
   }
 }
 .l-serv-ic--reco4 {
@@ -96,7 +96,7 @@
   @include global.height(104);
 
   @include global.mq(sp) {
-    @include global.sp-width(80);
+    @include global.sp-width(120);
     @include global.sp-height(67);
   }
 }
